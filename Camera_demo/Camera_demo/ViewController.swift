@@ -16,6 +16,31 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         return view
     }()
     
+    lazy var inputMenuView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        return view
+    }()
+    
+    lazy var startBtn: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("시작", for: .normal)
+        btn.setImage(UIImage(named: ""), for: .normal)
+        btn.backgroundColor = .black
+        btn.setTitleColor(UIColor.white, for: .normal)
+        return btn
+    }()
+    
+    lazy var swapCam: UIButton = {
+        let btn = UIButton()
+        btn.backgroundColor = .brown
+        btn.setTitle("교체", for: .normal)
+        btn.setTitleColor(UIColor.black, for: .normal)
+        btn.titleLabel?.font = .systemFont(ofSize: 9)
+        btn.layer.cornerRadius = 15
+        return btn
+    }()
+    
     
     
     
@@ -51,6 +76,25 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             make.bottom.equalToSuperview().offset(-100)
         }
         
+        self.view.addSubview(inputMenuView)
+        self.inputMenuView.addSubview(startBtn)
+        inputMenuView.snp.makeConstraints { make in
+            make.leading.trailing.bottom.equalTo(self.view.safeAreaInsets)
+            make.height.equalTo(100)
+        }
+        startBtn.snp.makeConstraints { make in
+            make.width.equalTo(150)
+            make.height.equalTo(60)
+            make.center.equalToSuperview()
+        }
+        
+        self.inputMenuView.addSubview(swapCam)
+        swapCam.snp.makeConstraints {
+            $0.width.equalTo(30)
+            $0.height.equalTo(30)
+            $0.centerY.equalTo(inputMenuView)
+            $0.trailing.equalToSuperview().offset(-25)
+        }
     }
     
     
