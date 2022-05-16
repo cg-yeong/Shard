@@ -1,9 +1,4 @@
-//
-//  Camera_DemoUITestsLaunchTests.swift
-//  Camera_DemoUITests
-//
-//  Created by inforex on 2022/05/16.
-//
+
 
 import XCTest
 

@@ -1,9 +1,4 @@
-//
-//  SceneDelegate.swift
-//  Camera_Demo
-//
-//  Created by inforex on 2022/05/16.
-//
+
 
 import UIKit
 

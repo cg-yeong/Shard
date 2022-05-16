@@ -1,9 +1,4 @@
-//
-//  Camera_DemoTests.swift
-//  Camera_DemoTests
-//
-//  Created by inforex on 2022/05/16.
-//
+
 
 import XCTest
 @testable import Camera_Demo
