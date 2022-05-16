@@ -7,11 +7,18 @@
 
 import UIKit
 import AVFoundation
-import Combine
+import SnapKit
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
-    @IBOutlet weak var cameraView: UIView!
+    lazy var cameraView: UIView = {
+        let view = UIView()
+        return view
+    }()
+    
+    
+    
+    
     var captureSession: AVCaptureSession?
     var backCamera: AVCaptureDevice?
     var backCameraInput: AVCaptureInput?
@@ -28,13 +35,39 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        askCameraAuthorizationStatus()
+        Permission.sharedInstance.request(.Camera)
         // Do any additional setup after loading the view.
+        addLazyView()
         setCaptureSession()
         setPreview()
         setOutput()
     }
 
+    func addLazyView() {
+        
+        self.view.addSubview(cameraView)
+        cameraView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalTo(self.view.safeAreaInsets)
+            make.bottom.equalToSuperview().offset(-100)
+        }
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     func setCaptureSession() {
         captureSession = AVCaptureSession()
         guard let captureSession = captureSession else {
@@ -127,40 +160,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 //        }
     }
     
-    func askCameraAuthorizationStatus() {
-        switch AVCaptureDevice.authorizationStatus(for: .video) {
-        case .notDetermined:
-            AVCaptureDevice.requestAccess(for: .video) { grant in
-                if !grant {
-                    print("허용 안됨 카메라")
-                }
-            }
-        case .denied:
-            let permissionAlert = UIAlertController(title: "권한 필요", message: "카메라 권한이 필요합니다 허용해주세요.", preferredStyle: .alert)
-            let openSetting = UIAlertAction(title: "확인", style: .default) { _ in
-                if let url = URL(string: UIApplication.openSettingsURLString) {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                }
-            }
-            permissionAlert.addAction(openSetting)
-            
-            self.present(permissionAlert, animated: true, completion: nil)
-        case .restricted:
-            let permissionAlert = UIAlertController(title: "권한 필요", message: "카메라 권한이 필요합니다 허용해주세요.", preferredStyle: .alert)
-            let openSetting = UIAlertAction(title: "확인", style: .default) { _ in
-                if let url = URL(string: UIApplication.openSettingsURLString) {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                }
-            }
-            permissionAlert.addAction(openSetting)
-            
-            self.present(permissionAlert, animated: true, completion: nil)
-        case .authorized:
-            return
-        @unknown default:
-            fatalError()
-        }
-    }
+    
     
 }
 
