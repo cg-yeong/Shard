@@ -6,14 +6,30 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
-
+    
+    var captureSession: AVCaptureSession?
+    var backCamera: AVCaptureDevice?
+    var backCameraInput: AVCaptureInput?
+    var frontCamera: AVCaptureDevice?
+    var frontCameraInput: AVCaptureInput?
+    
+    var previewLayer: AVCaptureVideoPreviewLayer?
+    var videoOutput: AVCaptureVideoDataOutput?
+    
+    var takePicture = false
+    var isBackCamera = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
 
-
+    
+    
+    
+    
 }
 
