@@ -8,6 +8,7 @@
 import UIKit
 import AVFoundation
 import SnapKit
+import Combine
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
@@ -56,7 +57,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     var takePicture = false
     var isBackCamera = true
     
-    var btn = UIButton()
+    var bag = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,52 +66,18 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         addLazyView()
         setCaptureSession()
         setPreview()
-        setOutput()
-    }
-
-    func addLazyView() {
         
-        self.view.addSubview(cameraView)
-        cameraView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalTo(self.view.safeAreaInsets)
-            make.bottom.equalToSuperview().offset(-100)
-        }
-        
-        self.view.addSubview(inputMenuView)
-        self.inputMenuView.addSubview(startBtn)
-        inputMenuView.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalTo(self.view.safeAreaInsets)
-            make.height.equalTo(100)
-        }
-        startBtn.snp.makeConstraints { make in
-            make.width.equalTo(150)
-            make.height.equalTo(60)
-            make.center.equalToSuperview()
-        }
-        
-        self.inputMenuView.addSubview(swapCam)
-        swapCam.snp.makeConstraints {
-            $0.width.equalTo(30)
-            $0.height.equalTo(30)
-            $0.centerY.equalTo(inputMenuView)
-            $0.trailing.equalToSuperview().offset(-25)
-        }
+        observeTaps()
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    private func observeTaps() {
+        swapCam
+            .publisher(for: .touchUpInside)
+            .sink { _ in
+                print("Swap Camera Tapped")
+            }
+            .store(in: &bag)
+    }
     
     func setCaptureSession() {
         captureSession = AVCaptureSession()
@@ -124,10 +91,12 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             captureSession.sessionPreset = .photo
         }
         
-        addInputCaptureDevice()
+        addCaptureDeviceInput()
+        addCaptureOutput()
     }
     
-    func addInputCaptureDevice() {
+    func addCaptureDeviceInput() {
+        
         if let device = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) {
             backCamera = device
         } else {
@@ -156,21 +125,12 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             fatalError("전면 카메라 설치 불가능")
         }
         
-        captureSession?.addInput(backCameraInput!)
+        captureSession!.addInput(backCameraInput!)
         
     }
     
-    func setPreview() {
-        self.view.layoutIfNeeded()
-        
-        previewLayer = AVCaptureVideoPreviewLayer(session: captureSession!)
-        previewLayer?.videoGravity = .resizeAspectFill
-//        previewLayer?.connection?.videoOrientation = .portrait
-        previewLayer?.frame = cameraView.frame
-        cameraView.layer.insertSublayer(previewLayer!, at: 0)
-    }
     
-    func setOutput() {
+    func addCaptureOutput() {
         videoOutput = AVCaptureVideoDataOutput()
         let cameraSampleBufferQueue = DispatchQueue(label: "cameraGlobalQueue", qos: .userInteractive)
         videoOutput?.setSampleBufferDelegate(self, queue: cameraSampleBufferQueue)
@@ -184,6 +144,16 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         
         captureSession?.commitConfiguration()
         captureSession?.startRunning()
+    }
+    
+    func setPreview() {
+        self.view.layoutIfNeeded()
+        
+        previewLayer = AVCaptureVideoPreviewLayer(session: captureSession!)
+        previewLayer?.videoGravity = .resizeAspectFill
+//        previewLayer?.connection?.videoOrientation = .portrait
+        previewLayer?.frame = cameraView.frame
+        cameraView.layer.insertSublayer(previewLayer!, at: 0)
     }
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
