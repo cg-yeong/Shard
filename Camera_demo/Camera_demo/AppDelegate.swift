@@ -18,8 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         } else {
             window = UIWindow(frame: UIScreen.main.bounds)
-            let sb = UIStoryboard(name: "CameraVC", bundle: nil)
-            let rootVC = sb.instantiateViewController(withIdentifier: "CameraVC") as? CameraVC
+            let sb = UIStoryboard(name: "ViewController", bundle: nil)
+            let rootVC = sb.instantiateViewController(withIdentifier: "ViewController") as? ViewController
             window?.rootViewController = rootVC
             window?.makeKeyAndVisible()
         }

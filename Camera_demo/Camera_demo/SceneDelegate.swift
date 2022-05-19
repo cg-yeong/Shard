@@ -19,9 +19,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         
         window = UIWindow(windowScene: scene)
-        let sb = UIStoryboard(name: "CameraVC", bundle: nil)
+        let sb = UIStoryboard(name: "Camera", bundle: nil)
         guard let rootVC = sb.instantiateViewController(withIdentifier: "CameraVC") as? CameraVC else { return }
-        window?.rootViewController = UINavigationController(rootViewController: rootVC)
+        window?.rootViewController = rootVC
         window?.makeKeyAndVisible()
         
     }

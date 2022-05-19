@@ -22,6 +22,18 @@ extension CameraVC {
             make.leading.top.trailing.equalToSuperview()
             make.height.equalTo(100)
         }
+        self.topMenuView.addSubview(muteBtn)
+        muteBtn.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.width.height.equalTo(50)
+            make.centerX.equalToSuperview().offset(-80)
+        }
+        self.topMenuView.addSubview(flashBtn)
+        flashBtn.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.width.height.equalTo(50)
+            make.centerX.equalToSuperview().offset(80)
+        }
         
         self.view.addSubview(bottomMenuView)
         bottomMenuView.snp.makeConstraints { make in
@@ -35,6 +47,11 @@ extension CameraVC {
             make.width.height.equalTo(50)
             make.leading.equalToSuperview().offset(25)
         }
+        self.galleryPreview.addSubview(preImageView)
+        preImageView.snp.makeConstraints { make in
+            make.leading.trailing.top.bottom.equalToSuperview()
+        }
+        
         self.bottomMenuView.addSubview(shutBtn)
         shutBtn.snp.makeConstraints { make in
             make.width.equalTo(60)

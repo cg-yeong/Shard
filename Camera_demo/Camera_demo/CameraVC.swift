@@ -18,38 +18,61 @@ class CameraVC: UIViewController {
     
     lazy var topMenuView: UIView = {
         let view = UIView()
-        view.backgroundColor = .black
+        view.backgroundColor = .darkGray
         return view
+    }()
+    
+    lazy var muteBtn: UIButton = {
+        let btn = UIButton()
+        btn.setImage(UIImage(named: "sound"), for: .normal)
+        btn.setImage(UIImage(named: "mute"), for: .selected)
+        btn.contentMode = .center
+        btn.backgroundColor = .lightGray
+        btn.layer.cornerRadius = 25
+        return btn
+    }()
+    
+    lazy var flashBtn: UIButton = {
+        let btn = UIButton()
+        btn.setImage(UIImage(named: "flashOff"), for: .normal)
+        btn.setImage(UIImage(named: "flashOn"), for: .selected)
+        btn.contentMode = .center
+        btn.backgroundColor = .lightGray
+        btn.layer.cornerRadius = 25
+        return btn
     }()
     
     lazy var bottomMenuView: UIView = {
         let view = UIView()
-        view.backgroundColor = .black
+        view.backgroundColor = .darkGray
         return view
     }()
     
     lazy var galleryPreview: UIView = {
         let view = UIView()
-        view.backgroundColor = .darkGray
+        view.backgroundColor = .lightGray
         view.layer.cornerRadius = 15
         return view
     }()
     
+    lazy var preImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage()
+        imageView.isUserInteractionEnabled = true
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
+    
     lazy var shutBtn: UIButton = {
         let btn = UIButton()
-//        btn.setTitle("", for: .normal)
         btn.setImage(UIImage(named: "circle"), for: .normal)
-        btn.backgroundColor = .black
         btn.setTitleColor(UIColor.white, for: .normal)
         return btn
     }()
     
     lazy var swapCam: UIButton = {
         let btn = UIButton()
-        btn.backgroundColor = .black
-//        btn.setTitle("교체", for: .normal)
         btn.setImage(UIImage(named: "flip"), for: .normal)
-        btn.setTitleColor(UIColor.black, for: .normal)
         btn.titleLabel?.font = .systemFont(ofSize: 9)
         btn.layer.cornerRadius = 15
         return btn
@@ -77,3 +100,6 @@ class CameraVC: UIViewController {
     
     
 }
+//<a target="_blank" href="https://icons8.com/icon/16414/flash-auto">Flash Auto</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+//icon by Icons8
+
