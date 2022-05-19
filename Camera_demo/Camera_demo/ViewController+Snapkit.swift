@@ -8,33 +8,45 @@
 import Foundation
 import SnapKit
 
-extension ViewController {
+extension CameraVC {
     
     func addLazyView() {
         
         self.view.addSubview(cameraView)
         cameraView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalTo(self.view.safeAreaInsets)
-            make.bottom.equalToSuperview().offset(-100)
+            make.edges.equalToSuperview()
         }
         
-        self.view.addSubview(inputMenuView)
-        self.inputMenuView.addSubview(startBtn)
-        inputMenuView.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalTo(self.view.safeAreaInsets)
+        self.view.addSubview(topMenuView)
+        topMenuView.snp.makeConstraints { make in
+            make.leading.top.trailing.equalToSuperview()
             make.height.equalTo(100)
         }
-        startBtn.snp.makeConstraints { make in
-            make.width.equalTo(150)
+        
+        self.view.addSubview(bottomMenuView)
+        bottomMenuView.snp.makeConstraints { make in
+            make.leading.trailing.bottom.equalToSuperview()
+            make.height.equalTo(100)
+        }
+        
+        self.bottomMenuView.addSubview(galleryPreview)
+        galleryPreview.snp.makeConstraints { make in
+            make.centerY.equalTo(bottomMenuView)
+            make.width.height.equalTo(50)
+            make.leading.equalToSuperview().offset(25)
+        }
+        self.bottomMenuView.addSubview(shutBtn)
+        shutBtn.snp.makeConstraints { make in
+            make.width.equalTo(60)
             make.height.equalTo(60)
             make.center.equalToSuperview()
         }
         
-        self.inputMenuView.addSubview(swapCam)
+        self.bottomMenuView.addSubview(swapCam)
         swapCam.snp.makeConstraints {
-            $0.width.equalTo(30)
-            $0.height.equalTo(30)
-            $0.centerY.equalTo(inputMenuView)
+            $0.width.equalTo(50)
+            $0.height.equalTo(50)
+            $0.centerY.equalTo(bottomMenuView)
             $0.trailing.equalToSuperview().offset(-25)
         }
     }
