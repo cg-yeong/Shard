@@ -16,6 +16,9 @@
 		6693A6E7283F437300164E4E /* Handmade_AnimaitonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6693A6E6283F437300164E4E /* Handmade_AnimaitonTests.swift */; };
 		6693A6F1283F437300164E4E /* Handmade_AnimaitonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6693A6F0283F437300164E4E /* Handmade_AnimaitonUITests.swift */; };
 		6693A6F3283F437300164E4E /* Handmade_AnimaitonUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6693A6F2283F437300164E4E /* Handmade_AnimaitonUITestsLaunchTests.swift */; };
+		6EB87696DE18C0ABEB3A20FD /* Pods_Handmade_AnimaitonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4999D3C04802D7B288E765C8 /* Pods_Handmade_AnimaitonTests.framework */; };
+		872CD9D96DE9AA8932BFF4FF /* Pods_Handmade_Animaiton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6941161DE3BA1DBA3E676020 /* Pods_Handmade_Animaiton.framework */; };
+		CAEDA72DAD09894157286447 /* Pods_Handmade_Animaiton_Handmade_AnimaitonUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FD5F6F4965673A337C1E149 /* Pods_Handmade_Animaiton_Handmade_AnimaitonUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1907FC232E63A2ACEA37A05F /* Pods-Handmade_Animaiton.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handmade_Animaiton.debug.xcconfig"; path = "Target Support Files/Pods-Handmade_Animaiton/Pods-Handmade_Animaiton.debug.xcconfig"; sourceTree = "<group>"; };
+		3E06943EF8F035738925A9AC /* Pods-Handmade_Animaiton-Handmade_AnimaitonUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handmade_Animaiton-Handmade_AnimaitonUITests.release.xcconfig"; path = "Target Support Files/Pods-Handmade_Animaiton-Handmade_AnimaitonUITests/Pods-Handmade_Animaiton-Handmade_AnimaitonUITests.release.xcconfig"; sourceTree = "<group>"; };
+		443AE6ADAE70971C0C92A691 /* Pods-Handmade_Animaiton.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handmade_Animaiton.release.xcconfig"; path = "Target Support Files/Pods-Handmade_Animaiton/Pods-Handmade_Animaiton.release.xcconfig"; sourceTree = "<group>"; };
+		4999D3C04802D7B288E765C8 /* Pods_Handmade_AnimaitonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Handmade_AnimaitonTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E02CAB1880F7F2C8CC66697 /* Pods-Handmade_AnimaitonTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handmade_AnimaitonTests.release.xcconfig"; path = "Target Support Files/Pods-Handmade_AnimaitonTests/Pods-Handmade_AnimaitonTests.release.xcconfig"; sourceTree = "<group>"; };
+		4FD5F6F4965673A337C1E149 /* Pods_Handmade_Animaiton_Handmade_AnimaitonUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Handmade_Animaiton_Handmade_AnimaitonUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		667E0397B81FEA613BAA4636 /* Pods-Handmade_AnimaitonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handmade_AnimaitonTests.debug.xcconfig"; path = "Target Support Files/Pods-Handmade_AnimaitonTests/Pods-Handmade_AnimaitonTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6693A6CC283F437200164E4E /* Handmade_Animaiton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Handmade_Animaiton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6693A6CF283F437200164E4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6693A6D1283F437200164E4E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +59,8 @@
 		6693A6EC283F437300164E4E /* Handmade_AnimaitonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handmade_AnimaitonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6693A6F0283F437300164E4E /* Handmade_AnimaitonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handmade_AnimaitonUITests.swift; sourceTree = "<group>"; };
 		6693A6F2283F437300164E4E /* Handmade_AnimaitonUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handmade_AnimaitonUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		6941161DE3BA1DBA3E676020 /* Pods_Handmade_Animaiton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Handmade_Animaiton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D84F0E36FB2C2DCFCFCA2E8 /* Pods-Handmade_Animaiton-Handmade_AnimaitonUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handmade_Animaiton-Handmade_AnimaitonUITests.debug.xcconfig"; path = "Target Support Files/Pods-Handmade_Animaiton-Handmade_AnimaitonUITests/Pods-Handmade_Animaiton-Handmade_AnimaitonUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				872CD9D96DE9AA8932BFF4FF /* Pods_Handmade_Animaiton.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EB87696DE18C0ABEB3A20FD /* Pods_Handmade_AnimaitonTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAEDA72DAD09894157286447 /* Pods_Handmade_Animaiton_Handmade_AnimaitonUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +98,8 @@
 				6693A6E5283F437300164E4E /* Handmade_AnimaitonTests */,
 				6693A6EF283F437300164E4E /* Handmade_AnimaitonUITests */,
 				6693A6CD283F437200164E4E /* Products */,
+				79FC7C2261550F8F910253DA /* Pods */,
+				E5F44CE3B7BA1189D0118A6E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -127,6 +144,30 @@
 			path = Handmade_AnimaitonUITests;
 			sourceTree = "<group>";
 		};
+		79FC7C2261550F8F910253DA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1907FC232E63A2ACEA37A05F /* Pods-Handmade_Animaiton.debug.xcconfig */,
+				443AE6ADAE70971C0C92A691 /* Pods-Handmade_Animaiton.release.xcconfig */,
+				8D84F0E36FB2C2DCFCFCA2E8 /* Pods-Handmade_Animaiton-Handmade_AnimaitonUITests.debug.xcconfig */,
+				3E06943EF8F035738925A9AC /* Pods-Handmade_Animaiton-Handmade_AnimaitonUITests.release.xcconfig */,
+				667E0397B81FEA613BAA4636 /* Pods-Handmade_AnimaitonTests.debug.xcconfig */,
+				4E02CAB1880F7F2C8CC66697 /* Pods-Handmade_AnimaitonTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		E5F44CE3B7BA1189D0118A6E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6941161DE3BA1DBA3E676020 /* Pods_Handmade_Animaiton.framework */,
+				4FD5F6F4965673A337C1E149 /* Pods_Handmade_Animaiton_Handmade_AnimaitonUITests.framework */,
+				4999D3C04802D7B288E765C8 /* Pods_Handmade_AnimaitonTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -134,6 +175,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6693A6F6283F437400164E4E /* Build configuration list for PBXNativeTarget "Handmade_Animaiton" */;
 			buildPhases = (
+				B3F3B405BA34ADAD22DB2919 /* [CP] Check Pods Manifest.lock */,
 				6693A6C8283F437200164E4E /* Sources */,
 				6693A6C9283F437200164E4E /* Frameworks */,
 				6693A6CA283F437200164E4E /* Resources */,
@@ -151,9 +193,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6693A6F9283F437400164E4E /* Build configuration list for PBXNativeTarget "Handmade_AnimaitonTests" */;
 			buildPhases = (
+				D70996D5F73416BFD5DB48FE /* [CP] Check Pods Manifest.lock */,
 				6693A6DE283F437300164E4E /* Sources */,
 				6693A6DF283F437300164E4E /* Frameworks */,
 				6693A6E0283F437300164E4E /* Resources */,
+				12341C7CBCF4397A6A0F5186 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -169,6 +213,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6693A6FC283F437400164E4E /* Build configuration list for PBXNativeTarget "Handmade_AnimaitonUITests" */;
 			buildPhases = (
+				0A063FEB35D5BAD2E39756CE /* [CP] Check Pods Manifest.lock */,
 				6693A6E8283F437300164E4E /* Sources */,
 				6693A6E9283F437300164E4E /* Frameworks */,
 				6693A6EA283F437300164E4E /* Resources */,
@@ -252,6 +297,92 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0A063FEB35D5BAD2E39756CE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Handmade_Animaiton-Handmade_AnimaitonUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		12341C7CBCF4397A6A0F5186 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Handmade_AnimaitonTests/Pods-Handmade_AnimaitonTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Handmade_AnimaitonTests/Pods-Handmade_AnimaitonTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Handmade_AnimaitonTests/Pods-Handmade_AnimaitonTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B3F3B405BA34ADAD22DB2919 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Handmade_Animaiton-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D70996D5F73416BFD5DB48FE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Handmade_AnimaitonTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6693A6C8283F437200164E4E /* Sources */ = {
@@ -432,6 +563,7 @@
 		};
 		6693A6F7283F437400164E4E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1907FC232E63A2ACEA37A05F /* Pods-Handmade_Animaiton.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -460,6 +592,7 @@
 		};
 		6693A6F8283F437400164E4E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 443AE6ADAE70971C0C92A691 /* Pods-Handmade_Animaiton.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -488,6 +621,7 @@
 		};
 		6693A6FA283F437400164E4E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 667E0397B81FEA613BAA4636 /* Pods-Handmade_AnimaitonTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -508,6 +642,7 @@
 		};
 		6693A6FB283F437400164E4E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E02CAB1880F7F2C8CC66697 /* Pods-Handmade_AnimaitonTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -528,6 +663,7 @@
 		};
 		6693A6FD283F437400164E4E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8D84F0E36FB2C2DCFCFCA2E8 /* Pods-Handmade_Animaiton-Handmade_AnimaitonUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -546,6 +682,7 @@
 		};
 		6693A6FE283F437400164E4E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3E06943EF8F035738925A9AC /* Pods-Handmade_Animaiton-Handmade_AnimaitonUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
