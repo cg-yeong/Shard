@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import Combine
+import AVFoundation
 
 class CameraVC: UIViewController {
     
@@ -78,15 +79,25 @@ class CameraVC: UIViewController {
         return btn
     }()
     
+    var camera: Camera?
+    var videoPreviewLayer: AVCaptureVideoPreviewLayer!
     var cBag = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         Permission.sharedInstance.request(.Camera)
+        camera = Camera.init()
         // Do any additional setup after loading the view.
         addLazyView()
-        
+        setupLivePreview()
         observeTaps()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if camera != nil {
+            camera!.session.stopRunning()
+        }
     }
     
     private func observeTaps() {
@@ -96,9 +107,42 @@ class CameraVC: UIViewController {
                 print("Swap Camera Tapped")
             }
             .store(in: &cBag)
+        
+        shutBtn
+            .publisher(for: .touchUpInside)
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                self.camera?.capturePhoto()
+            }
+            .store(in: &cBag)
+        
+        if let camera = camera {
+            let _ = camera.photoPreview.sink { //_ in
+                print($0)
+            } receiveValue: { data in
+                DispatchQueue.main.async {
+                    self.preImageView.image = UIImage(data: data)
+                }
+            }
+            .store(in: &cBag)
+            
+        }
     }
     
-    
+    func setupLivePreview() {
+        guard camera != nil else { return }
+        videoPreviewLayer = AVCaptureVideoPreviewLayer(session: camera!.session)
+        
+        videoPreviewLayer.videoGravity = .resizeAspect
+        videoPreviewLayer.connection?.videoOrientation = .portrait
+        cameraView.layer.addSublayer(videoPreviewLayer)
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.camera!.session.startRunning()
+            DispatchQueue.main.async {
+                self.videoPreviewLayer.frame = self.cameraView.bounds
+            }
+        }
+    }
 }
 //<a target="_blank" href="https://icons8.com/icon/16414/flash-auto">Flash Auto</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
 //icon by Icons8
