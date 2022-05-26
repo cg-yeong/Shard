@@ -179,6 +179,7 @@
 				6693A6C8283F437200164E4E /* Sources */,
 				6693A6C9283F437200164E4E /* Frameworks */,
 				6693A6CA283F437200164E4E /* Resources */,
+				94FC87851F35E5BD2D3A3092 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -197,7 +198,6 @@
 				6693A6DE283F437300164E4E /* Sources */,
 				6693A6DF283F437300164E4E /* Frameworks */,
 				6693A6E0283F437300164E4E /* Resources */,
-				12341C7CBCF4397A6A0F5186 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -217,6 +217,7 @@
 				6693A6E8283F437300164E4E /* Sources */,
 				6693A6E9283F437300164E4E /* Frameworks */,
 				6693A6EA283F437300164E4E /* Resources */,
+				08D0E5835E8E8207CDDA7928 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -299,6 +300,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		08D0E5835E8E8207CDDA7928 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Handmade_Animaiton-Handmade_AnimaitonUITests/Pods-Handmade_Animaiton-Handmade_AnimaitonUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Handmade_Animaiton-Handmade_AnimaitonUITests/Pods-Handmade_Animaiton-Handmade_AnimaitonUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Handmade_Animaiton-Handmade_AnimaitonUITests/Pods-Handmade_Animaiton-Handmade_AnimaitonUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		0A063FEB35D5BAD2E39756CE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -321,21 +339,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		12341C7CBCF4397A6A0F5186 /* [CP] Embed Pods Frameworks */ = {
+		94FC87851F35E5BD2D3A3092 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Handmade_AnimaitonTests/Pods-Handmade_AnimaitonTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Handmade_Animaiton/Pods-Handmade_Animaiton-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Handmade_AnimaitonTests/Pods-Handmade_AnimaitonTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Handmade_Animaiton/Pods-Handmade_Animaiton-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Handmade_AnimaitonTests/Pods-Handmade_AnimaitonTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Handmade_Animaiton/Pods-Handmade_Animaiton-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B3F3B405BA34ADAD22DB2919 /* [CP] Check Pods Manifest.lock */ = {
