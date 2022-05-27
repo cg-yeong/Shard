@@ -16,6 +16,9 @@
 		6693A6E7283F437300164E4E /* Handmade_AnimaitonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6693A6E6283F437300164E4E /* Handmade_AnimaitonTests.swift */; };
 		6693A6F1283F437300164E4E /* Handmade_AnimaitonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6693A6F0283F437300164E4E /* Handmade_AnimaitonUITests.swift */; };
 		6693A6F3283F437300164E4E /* Handmade_AnimaitonUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6693A6F2283F437300164E4E /* Handmade_AnimaitonUITestsLaunchTests.swift */; };
+		6693A70028408DD600164E4E /* publicExample_CAShapeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6693A6FF28408DD600164E4E /* publicExample_CAShapeLayer.swift */; };
+		6693A70528408F0500164E4E /* CAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6693A70428408F0500164E4E /* CAView.swift */; };
+		6693A70728409E3F00164E4E /* Bell_CA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6693A70628409E3F00164E4E /* Bell_CA.swift */; };
 		6EB87696DE18C0ABEB3A20FD /* Pods_Handmade_AnimaitonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4999D3C04802D7B288E765C8 /* Pods_Handmade_AnimaitonTests.framework */; };
 		872CD9D96DE9AA8932BFF4FF /* Pods_Handmade_Animaiton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6941161DE3BA1DBA3E676020 /* Pods_Handmade_Animaiton.framework */; };
 		CAEDA72DAD09894157286447 /* Pods_Handmade_Animaiton_Handmade_AnimaitonUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FD5F6F4965673A337C1E149 /* Pods_Handmade_Animaiton_Handmade_AnimaitonUITests.framework */; };
@@ -59,6 +62,9 @@
 		6693A6EC283F437300164E4E /* Handmade_AnimaitonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handmade_AnimaitonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6693A6F0283F437300164E4E /* Handmade_AnimaitonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handmade_AnimaitonUITests.swift; sourceTree = "<group>"; };
 		6693A6F2283F437300164E4E /* Handmade_AnimaitonUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handmade_AnimaitonUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		6693A6FF28408DD600164E4E /* publicExample_CAShapeLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = publicExample_CAShapeLayer.swift; sourceTree = "<group>"; };
+		6693A70428408F0500164E4E /* CAView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAView.swift; sourceTree = "<group>"; };
+		6693A70628409E3F00164E4E /* Bell_CA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bell_CA.swift; sourceTree = "<group>"; };
 		6941161DE3BA1DBA3E676020 /* Pods_Handmade_Animaiton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Handmade_Animaiton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D84F0E36FB2C2DCFCFCA2E8 /* Pods-Handmade_Animaiton-Handmade_AnimaitonUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handmade_Animaiton-Handmade_AnimaitonUITests.debug.xcconfig"; path = "Target Support Files/Pods-Handmade_Animaiton-Handmade_AnimaitonUITests/Pods-Handmade_Animaiton-Handmade_AnimaitonUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,6 +125,8 @@
 				6693A6CF283F437200164E4E /* AppDelegate.swift */,
 				6693A6D1283F437200164E4E /* SceneDelegate.swift */,
 				6693A6D3283F437200164E4E /* ViewController.swift */,
+				6693A70328408EAD00164E4E /* CAView */,
+				6693A6FF28408DD600164E4E /* publicExample_CAShapeLayer.swift */,
 				6693A6D5283F437200164E4E /* Main.storyboard */,
 				6693A6D8283F437300164E4E /* Assets.xcassets */,
 				6693A6DA283F437300164E4E /* LaunchScreen.storyboard */,
@@ -144,6 +152,15 @@
 			path = Handmade_AnimaitonUITests;
 			sourceTree = "<group>";
 		};
+		6693A70328408EAD00164E4E /* CAView */ = {
+			isa = PBXGroup;
+			children = (
+				6693A70428408F0500164E4E /* CAView.swift */,
+				6693A70628409E3F00164E4E /* Bell_CA.swift */,
+			);
+			path = CAView;
+			sourceTree = "<group>";
+		};
 		79FC7C2261550F8F910253DA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,7 +171,6 @@
 				667E0397B81FEA613BAA4636 /* Pods-Handmade_AnimaitonTests.debug.xcconfig */,
 				4E02CAB1880F7F2C8CC66697 /* Pods-Handmade_AnimaitonTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -409,7 +425,10 @@
 			files = (
 				6693A6D4283F437200164E4E /* ViewController.swift in Sources */,
 				6693A6D0283F437200164E4E /* AppDelegate.swift in Sources */,
+				6693A70728409E3F00164E4E /* Bell_CA.swift in Sources */,
+				6693A70028408DD600164E4E /* publicExample_CAShapeLayer.swift in Sources */,
 				6693A6D2283F437200164E4E /* SceneDelegate.swift in Sources */,
+				6693A70528408F0500164E4E /* CAView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,25 +16,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vPb-TX-aDo">
-                                <rect key="frame" x="289" y="410.5" width="75" height="75"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uT6-TO-RL6">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d78-ly-aTY">
+                                        <rect key="frame" x="181.5" y="737" width="51" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="play"/>
+                                        <connections>
+                                            <action selector="play:" destination="BYZ-38-t0r" eventType="touchUpInside" id="daj-78-8Vn"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="75" id="CXL-px-Ucf"/>
-                                    <constraint firstAttribute="width" constant="75" id="Zal-hh-0du"/>
+                                    <constraint firstAttribute="bottom" secondItem="d78-ly-aTY" secondAttribute="bottom" constant="50" id="FVv-1V-9zt"/>
+                                    <constraint firstItem="d78-ly-aTY" firstAttribute="centerX" secondItem="uT6-TO-RL6" secondAttribute="centerX" id="T3y-BU-e5E"/>
                                 </constraints>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="heart"/>
-                            </button>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="vPb-TX-aDo" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="c8S-g1-1d4"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vPb-TX-aDo" secondAttribute="trailing" constant="50" id="eLQ-BX-0SF"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="uT6-TO-RL6" secondAttribute="bottom" id="9D0-z1-r1W"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uT6-TO-RL6" secondAttribute="trailing" id="BRY-s4-KUl"/>
+                            <constraint firstItem="uT6-TO-RL6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="T5g-nF-VyX"/>
+                            <constraint firstItem="uT6-TO-RL6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="UO4-aO-pZV"/>
+                            <constraint firstItem="uT6-TO-RL6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="kR9-mD-081"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="rotateBtn" destination="vPb-TX-aDo" id="bIz-49-riL"/>
+                        <outlet property="plate" destination="uT6-TO-RL6" id="AnX-hz-Bof"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -43,7 +55,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="heart" width="512" height="512"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
