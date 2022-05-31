@@ -14,7 +14,8 @@ extension CameraVC {
         
         self.view.addSubview(cameraView)
         cameraView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.leading.trailing.top.bottom.equalToSuperview()
+            make.center.equalToSuperview()
         }
         
         self.view.addSubview(topMenuView)
@@ -65,6 +66,21 @@ extension CameraVC {
             $0.height.equalTo(50)
             $0.centerY.equalTo(bottomMenuView)
             $0.trailing.equalToSuperview().offset(-25)
+        }
+    }
+    
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.willTransition(to: newCollection, with: coordinator)
+        let isPortrait = UIDevice.current.orientation.isPortrait
+        
+        topMenuView.isHidden = !isPortrait
+        bottomMenuView.isHidden = !isPortrait
+
+        if camera != nil, videoPreviewLayer != nil {
+            videoPreviewLayer.connection?.videoOrientation = isPortrait ? .portrait : .landscapeLeft
+        }
+        DispatchQueue.main.async {
+            self.videoPreviewLayer.frame = self.cameraView.bounds
         }
     }
 }

@@ -133,7 +133,7 @@ class CameraVC: UIViewController {
         guard camera != nil else { return }
         videoPreviewLayer = AVCaptureVideoPreviewLayer(session: camera!.session)
         
-        videoPreviewLayer.videoGravity = .resizeAspect
+        videoPreviewLayer.videoGravity = .resizeAspectFill
         videoPreviewLayer.connection?.videoOrientation = .portrait
         cameraView.layer.addSublayer(videoPreviewLayer)
         DispatchQueue.global(qos: .userInitiated).async {
