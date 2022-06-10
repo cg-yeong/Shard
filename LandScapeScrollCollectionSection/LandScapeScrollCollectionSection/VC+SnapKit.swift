@@ -26,7 +26,7 @@ extension ViewController {
         itemPlateView.snp.remakeConstraints {
             $0.bottom.equalToSuperview()
             $0.centerX.equalToSuperview()
-            $0.height.equalTo(244)
+            $0.height.equalTo(203)
             $0.leading.equalToSuperview().offset(35)
         }
         
@@ -40,7 +40,7 @@ extension ViewController {
         
         itemPlateView.addSubview(bottomMenuView)
         bottomMenuView.snp.remakeConstraints {
-            $0.bottom.equalTo(itemPlateView.safeAreaInsets.bottom)
+            $0.bottom.equalTo(itemPlateView.safeAreaInsets.bottom).offset(-20)
             $0.centerX.equalToSuperview()
             $0.height.equalTo(36)
             $0.width.equalToSuperview().offset(-40)
@@ -49,8 +49,9 @@ extension ViewController {
         itemPlateView.addSubview(itemCollectionView)
         itemCollectionView.snp.remakeConstraints {
             $0.centerX.equalToSuperview()
+            $0.leading.equalToSuperview().offset(20)
             $0.bottom.equalTo(bottomMenuView.snp.top).offset(-15)
-            $0.width.equalToSuperview()
+            
             $0.top.equalTo(categoryArticle.snp.bottom).offset(4)
         }
         
@@ -71,6 +72,14 @@ extension ViewController {
                 make.height.equalToSuperview()
                 make.width.equalTo(btn.titleLabel!.snp.width).offset(10)
             }
+        }
+        
+        itemPlateView.addSubview(pageArticle)
+        pageArticle.snp.remakeConstraints {
+            $0.bottom.equalTo(bottomMenuView.snp.top)
+            $0.centerX.equalToSuperview()
+            $0.leading.equalToSuperview()
+            $0.top.equalTo(itemCollectionView.snp.bottom)
         }
     }
     

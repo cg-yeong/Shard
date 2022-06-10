@@ -17,6 +17,7 @@ class GiftItem: UICollectionViewCell {
     
     lazy var itemLabel: UILabel = UILabel().then {
         $0.numberOfLines = 0
+        $0.textAlignment = .center
         $0.backgroundColor = .cyan
         $0.textColor = .white
         $0.sizeToFit()
@@ -64,7 +65,7 @@ class GiftItem: UICollectionViewCell {
         }
         
         itemPrice.snp.remakeConstraints {
-            $0.width.equalTo(27)
+//            $0.width.equalTo(27)
             $0.height.equalTo(18)
             $0.top.equalTo(itemLabel.snp.bottom).offset(4)
             $0.centerX.equalToSuperview()

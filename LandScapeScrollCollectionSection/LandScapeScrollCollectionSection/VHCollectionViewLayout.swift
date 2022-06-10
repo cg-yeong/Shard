@@ -9,8 +9,6 @@ import UIKit
 
 public class SectionHorizontalFlowLayout: UICollectionViewLayout {
     
-//    var scrollDirection: UICollectionView.ScrollDirection = UIDevice.current.orientation.isLandscape ? .horizontal : .vertical
-    
     private var boundsSize = CGSize(width: 0, height: 0)
     
     var cache : [UICollectionViewLayoutAttributes] = []
@@ -103,14 +101,14 @@ public class SectionHorizontalFlowLayout: UICollectionViewLayout {
             let attr   = UICollectionViewLayoutAttributes(forCellWith: indexPath)
             
             // 사이즈
-            let itemWidth  = bounds.size.width / 4
-            let itemHeight = bounds.size.height / 2
+            let itemWidth  = bounds.size.width / 8
+            let itemHeight = bounds.size.height / 1
             let startWidth = CGFloat(page) * bounds.width
             
             
             // 0~ 3까지는 첫번재로우 4~ 7까지는 두번째로우
             let pos         = Int(row) % 8
-            let isSecondRow = pos > 3 ? true : false
+            let isSecondRow = false//pos > 3 ? true : false
             let xPosition      = !isSecondRow ? CGFloat(pos) * itemWidth : (CGFloat(pos) - 4) * itemWidth
             var frame          = CGRect(x: 0, y: 0, width: itemWidth, height: itemHeight)
                 frame.origin.x = startWidth + xPosition
@@ -119,5 +117,10 @@ public class SectionHorizontalFlowLayout: UICollectionViewLayout {
             
             return attr
     }
+    
+//    public override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
+//        
+//    }
+    
 }
 

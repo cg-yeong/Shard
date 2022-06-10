@@ -25,7 +25,8 @@ class ViewController: UIViewController {
     }
     
     lazy var categoryArticle: UIScrollView = UIScrollView().then { article in
-        article.isScrollEnabled = true
+//        article.isScrollEnabled = true
+        article.isPagingEnabled = true
         article.showsVerticalScrollIndicator = true
         article.showsHorizontalScrollIndicator = true
         article.backgroundColor = .green
@@ -43,10 +44,25 @@ class ViewController: UIViewController {
         $0.distribution = .equalSpacing
     }
     lazy var itemCollectionView: UICollectionView = .init(frame: .zero, collectionViewLayout: SectionHorizontalFlowLayout()).then {
+        $0.decelerationRate = .fast
+        $0.isPagingEnabled = true
         $0.backgroundColor = .orange
-        $0.showsHorizontalScrollIndicator = true
+        $0.showsHorizontalScrollIndicator = false
         $0.showsVerticalScrollIndicator = false
         $0.register(GiftItem.self, forCellWithReuseIdentifier: GiftItem.identifier)
+    }
+    
+    lazy var pageControl = UIPageControl().then {
+        $0.tintColor = .white
+        $0.backgroundColor = .black
+    }
+    lazy var pageArticle: UIView = .init().then {
+        $0.addSubview(pageControl)
+        $0.backgroundColor = .darkGray
+        pageControl.snp.remakeConstraints {
+            $0.height.equalTo(10)
+            $0.center.equalToSuperview()
+        }
     }
     
     lazy var bottomMenuView: UIView = UIView().then {
@@ -66,6 +82,10 @@ class ViewController: UIViewController {
     
     @objc func mngStackBtn(_ sender: UIButton) {
         guard viewModel.itemCategory.contains(sender.title(for: .normal) ?? "") else { return }
+        let sectionIndex = viewModel.itemCategory.firstIndex(of: sender.title(for: .normal) ?? "") ?? 0
+//        itemCollectionView.scrollToItem(at: IndexPath(item: 0, section: sectionIndex), at: .left, animated: true)
+        setPageControll(indexPath: IndexPath(item: 0, section: sectionIndex))
+        
         print(sender.title(for: .normal) ?? "empty")
     }
     
@@ -90,6 +110,50 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         
         return cell
     }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        self.setPageControl()
+    }
+    
+    func setPageControl() {
+        if let indexPath = self.itemCollectionView.indexPathsForVisibleItems.first, indexPath.section < self.itemCollectionView.numberOfSections {
+            let sectionCount = self.itemCollectionView.numberOfItems(inSection: indexPath.section)
+            //self.setCategoryLine(section: indexPath.section)
+            // 총 페이지 카운트
+            pageControl.numberOfPages = Int(ceil(Float(sectionCount) / 8))
+            let row = indexPath.row
+            if row < 8 {
+                pageControl.currentPage = 0
+            } else {
+                pageControl.currentPage = row % 8 == 0 ? Int(ceil(Float(row - 1) / 8)) : (row - 1) / 8
+            }
+        }
+    }
+    // 선택한 인덱스가 있고 해당 인덱스로 이동할 경우
+    func setPageControll(indexPath: IndexPath) {
+        if indexPath.section >= self.itemCollectionView.numberOfSections {
+            return
+        }
+        
+        let sectionCount = self.itemCollectionView.numberOfItems(inSection: indexPath.section)
+        
+        // 총 페이지 카운트
+        pageControl.numberOfPages = Int(ceil(Float(sectionCount) / 8))
+        
+        let row = indexPath.row
+        
+        if row < 8 {
+            pageControl.currentPage = 0
+        } else {
+            pageControl.currentPage = row % 8 == 0 ? Int(ceil(Float(row - 1) / 8)) : (row - 1) / 8
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+            self.itemCollectionView.scrollToItem(at: indexPath, at: .left, animated: true)
+//            self.setCategoryLine(section: indexPath.section)
+        })
+    }
+    
     
     
 }
