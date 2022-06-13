@@ -43,7 +43,7 @@ class ViewController: UIViewController {
         $0.alignment = .center
         $0.distribution = .equalSpacing
     }
-    lazy var itemCollectionView: UICollectionView = .init(frame: .zero, collectionViewLayout: SectionHorizontalFlowLayout()).then {
+    lazy var itemCollectionView: UICollectionView = .init(frame: .zero, collectionViewLayout: SectionHorizontalFlowLayout(itemPerPage: 6)).then {
         $0.decelerationRate = .fast
         $0.isPagingEnabled = true
         $0.backgroundColor = .orange
@@ -83,7 +83,6 @@ class ViewController: UIViewController {
     @objc func mngStackBtn(_ sender: UIButton) {
         guard viewModel.itemCategory.contains(sender.title(for: .normal) ?? "") else { return }
         let sectionIndex = viewModel.itemCategory.firstIndex(of: sender.title(for: .normal) ?? "") ?? 0
-//        itemCollectionView.scrollToItem(at: IndexPath(item: 0, section: sectionIndex), at: .left, animated: true)
         setPageControll(indexPath: IndexPath(item: 0, section: sectionIndex))
         
         print(sender.title(for: .normal) ?? "empty")
@@ -120,12 +119,12 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
             let sectionCount = self.itemCollectionView.numberOfItems(inSection: indexPath.section)
             //self.setCategoryLine(section: indexPath.section)
             // 총 페이지 카운트
-            pageControl.numberOfPages = Int(ceil(Float(sectionCount) / 8))
+            pageControl.numberOfPages = Int(ceil(Float(sectionCount) / 6))
             let row = indexPath.row
-            if row < 8 {
+            if row < 6 {
                 pageControl.currentPage = 0
             } else {
-                pageControl.currentPage = row % 8 == 0 ? Int(ceil(Float(row - 1) / 8)) : (row - 1) / 8
+                pageControl.currentPage = row % 6 == 0 ? Int(ceil(Float(row - 1) / 6)) : (row - 1) / 6
             }
         }
     }
@@ -138,14 +137,14 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         let sectionCount = self.itemCollectionView.numberOfItems(inSection: indexPath.section)
         
         // 총 페이지 카운트
-        pageControl.numberOfPages = Int(ceil(Float(sectionCount) / 8))
+        pageControl.numberOfPages = Int(ceil(Float(sectionCount) / 6))
         
         let row = indexPath.row
         
-        if row < 8 {
+        if row < 6 {
             pageControl.currentPage = 0
         } else {
-            pageControl.currentPage = row % 8 == 0 ? Int(ceil(Float(row - 1) / 8)) : (row - 1) / 8
+            pageControl.currentPage = row % 6 == 0 ? Int(ceil(Float(row - 1) / 6)) : (row - 1) / 6
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {

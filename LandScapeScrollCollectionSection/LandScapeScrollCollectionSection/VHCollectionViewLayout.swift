@@ -9,6 +9,14 @@ import UIKit
 
 public class SectionHorizontalFlowLayout: UICollectionViewLayout {
     
+    private var itemPerRow = 8
+    
+    convenience init(itemPerPage: Int) {
+        self.init()
+        itemPerRow = itemPerPage
+    }
+    
+    
     private var boundsSize = CGSize(width: 0, height: 0)
     
     var cache : [UICollectionViewLayoutAttributes] = []
@@ -27,7 +35,7 @@ public class SectionHorizontalFlowLayout: UICollectionViewLayout {
         totalPage = (0 ..< collection.numberOfSections).reduce(0){start, new in
             let sectionCount = collection.numberOfItems(inSection: new)
             // 8이 넘는 경우 한페이지를 추가 해줘야한다
-            let pageCnt      = Int(ceil(Float(sectionCount) / 8))
+            let pageCnt      = Int(ceil(Float(sectionCount) / Float(itemPerRow)))
                 // 0부터 시작하므로 하나씩 줄여준다
                 pageIndexCount.append(pageCnt - 1)
             return start + pageCnt
@@ -81,15 +89,16 @@ public class SectionHorizontalFlowLayout: UICollectionViewLayout {
         let startPage = self.startSectionIndex[indexPath.section]
         let row       = indexPath.row
         
-        if indexPath.row < 8 {
+        if indexPath.row < itemPerRow {
             return startPage
         }
         
-        let current = row % 8 == 0 ? Int(ceil(Float(row - 1) / 8)) : (row - 1) / 8
+        let current = row % itemPerRow == 0 ? Int(ceil(Float(row - 1) / Float(itemPerRow))) : (row - 1) / itemPerRow
         
         return current + startPage
     }
     
+    //TODO: 범용으로 만들어보기
     private func computeLayoutAttributesForCellAt( indexPath : IndexPath)
         -> UICollectionViewLayoutAttributes? {
             guard let page = self.getPage(indexPath: indexPath) else {
@@ -101,13 +110,13 @@ public class SectionHorizontalFlowLayout: UICollectionViewLayout {
             let attr   = UICollectionViewLayoutAttributes(forCellWith: indexPath)
             
             // 사이즈
-            let itemWidth  = bounds.size.width / 8
+            let itemWidth  = bounds.size.width / CGFloat(itemPerRow)
             let itemHeight = bounds.size.height / 1
             let startWidth = CGFloat(page) * bounds.width
             
             
             // 0~ 3까지는 첫번재로우 4~ 7까지는 두번째로우
-            let pos         = Int(row) % 8
+            let pos         = Int(row) % itemPerRow
             let isSecondRow = false//pos > 3 ? true : false
             let xPosition      = !isSecondRow ? CGFloat(pos) * itemWidth : (CGFloat(pos) - 4) * itemWidth
             var frame          = CGRect(x: 0, y: 0, width: itemWidth, height: itemHeight)
@@ -118,9 +127,6 @@ public class SectionHorizontalFlowLayout: UICollectionViewLayout {
             return attr
     }
     
-//    public override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
-//        
-//    }
     
 }
 

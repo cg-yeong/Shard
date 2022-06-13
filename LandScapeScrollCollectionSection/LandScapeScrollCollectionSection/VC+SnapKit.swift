@@ -13,16 +13,21 @@ extension ViewController {
     func addSnapView() {
         
         view.addSubview(plateView)
+        plateView.addSubview(firstLabel)
+        plateView.addSubview(itemPlateView)
+        itemPlateView.addSubview(categoryArticle)
+        itemPlateView.addSubview(bottomMenuView)
+        itemPlateView.addSubview(itemCollectionView)
+        itemPlateView.addSubview(pageArticle)
+        
         plateView.snp.remakeConstraints {
             $0.leading.trailing.top.bottom.equalToSuperview()
         }
         
-        plateView.addSubview(firstLabel)
         firstLabel.snp.makeConstraints {
             $0.center.equalToSuperview()
         }
         
-        plateView.addSubview(itemPlateView)
         itemPlateView.snp.remakeConstraints {
             $0.bottom.equalToSuperview()
             $0.centerX.equalToSuperview()
@@ -30,7 +35,6 @@ extension ViewController {
             $0.leading.equalToSuperview().offset(35)
         }
         
-        itemPlateView.addSubview(categoryArticle)
         categoryArticle.snp.remakeConstraints {
             $0.centerX.equalToSuperview()
             $0.top.equalToSuperview()
@@ -38,7 +42,6 @@ extension ViewController {
             $0.height.equalTo(36)
         }
         
-        itemPlateView.addSubview(bottomMenuView)
         bottomMenuView.snp.remakeConstraints {
             $0.bottom.equalTo(itemPlateView.safeAreaInsets.bottom).offset(-20)
             $0.centerX.equalToSuperview()
@@ -46,7 +49,6 @@ extension ViewController {
             $0.width.equalToSuperview().offset(-40)
         }
         
-        itemPlateView.addSubview(itemCollectionView)
         itemCollectionView.snp.remakeConstraints {
             $0.centerX.equalToSuperview()
             $0.leading.equalToSuperview().offset(20)
@@ -54,10 +56,6 @@ extension ViewController {
             
             $0.top.equalTo(categoryArticle.snp.bottom).offset(4)
         }
-        
-        
-        print(viewModel.itemCategory.first ?? "")
-        print(viewModel.items["combo"]?.first! ?? ItemModel(name: "empty", price: 999))
         
         viewModel.itemCategory.forEach { category in
             let btn = UIButton()
@@ -74,7 +72,6 @@ extension ViewController {
             }
         }
         
-        itemPlateView.addSubview(pageArticle)
         pageArticle.snp.remakeConstraints {
             $0.bottom.equalTo(bottomMenuView.snp.top)
             $0.centerX.equalToSuperview()

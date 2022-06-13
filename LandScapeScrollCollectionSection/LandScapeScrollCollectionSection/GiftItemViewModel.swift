@@ -39,8 +39,6 @@ class GiftItemViewModel {
                 items[_gift.type ?? ""] = _gift.items ?? [ItemModel(name: "empty", price: 999)]
             }
             
-            print(itemCategory)
-            print(items[itemCategory.first ?? "combo"]?.first)
         }
     }
 }
