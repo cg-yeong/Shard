@@ -20,6 +20,10 @@ extension ViewController {
         itemPlateView.addSubview(itemCollectionView)
         itemPlateView.addSubview(pageArticle)
         
+        setConstraint()
+    }
+    
+    func setConstraint() {
         plateView.snp.remakeConstraints {
             $0.leading.trailing.top.bottom.equalToSuperview()
         }
@@ -79,5 +83,4 @@ extension ViewController {
             $0.top.equalTo(itemCollectionView.snp.bottom)
         }
     }
-    
 }

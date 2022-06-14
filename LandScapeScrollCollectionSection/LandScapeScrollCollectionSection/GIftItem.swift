@@ -15,6 +15,10 @@ class GiftItem: UICollectionViewCell {
     
     var model: ItemModel?
     
+    lazy var backView: UIView = .init().then {
+        $0.backgroundColor = .white
+    }
+    
     lazy var itemLabel: UILabel = UILabel().then {
         $0.numberOfLines = 0
         $0.textAlignment = .center
@@ -52,12 +56,17 @@ class GiftItem: UICollectionViewCell {
     
     func setupUI() {
         backgroundColor = .lightGray
-        addSubview(itemLabel)
-        addSubview(itemPrice)
+        addSubview(backView)
+        backView.addSubview(itemLabel)
+        backView.addSubview(itemPrice)
         setConstraint()
     }
     
     func setConstraint() {
+        backView.snp.remakeConstraints { make in
+            make.leading.trailing.top.bottom.equalToSuperview()
+        }
+        
         itemLabel.snp.remakeConstraints { item in
             item.width.height.equalTo(70)
             item.centerX.equalToSuperview()
@@ -68,8 +77,11 @@ class GiftItem: UICollectionViewCell {
 //            $0.width.equalTo(27)
             $0.height.equalTo(18)
             $0.top.equalTo(itemLabel.snp.bottom).offset(4)
+            $0.bottom.equalToSuperview()
             $0.centerX.equalToSuperview()
+//            $0.leading.trailing.greaterThanOrEqualToSuperview()
         }
+        
     }
     
     func setConfig(model: ItemModel) {

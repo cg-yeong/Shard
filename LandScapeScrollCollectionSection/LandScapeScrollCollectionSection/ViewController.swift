@@ -11,6 +11,18 @@ import Then
 
 class ViewController: UIViewController {
     
+    override var shouldAutorotate: Bool {
+        return true
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+//        if let layout = itemCollectionView.collectionViewLayout as? SectionHorizontalFlowLayout {
+//            layout.cache.removeAll()
+//            layout.prepare()
+//        }
+    }
+    
     lazy var plateView: UIView = UIView().then {
         $0.backgroundColor = .gray
     }
@@ -43,7 +55,7 @@ class ViewController: UIViewController {
         $0.alignment = .center
         $0.distribution = .equalSpacing
     }
-    lazy var itemCollectionView: UICollectionView = .init(frame: .zero, collectionViewLayout: SectionHorizontalFlowLayout(itemPerPage: 6)).then {
+    lazy var itemCollectionView: UICollectionView = .init(frame: .zero, collectionViewLayout: SectionHorizontalFlowLayout()).then {
         $0.decelerationRate = .fast
         $0.isPagingEnabled = true
         $0.backgroundColor = .orange
@@ -77,6 +89,7 @@ class ViewController: UIViewController {
         addSnapView()
         itemCollectionView.delegate = self
         itemCollectionView.dataSource = self
+        
         
     }
     
@@ -119,12 +132,12 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
             let sectionCount = self.itemCollectionView.numberOfItems(inSection: indexPath.section)
             //self.setCategoryLine(section: indexPath.section)
             // 총 페이지 카운트
-            pageControl.numberOfPages = Int(ceil(Float(sectionCount) / 6))
+            pageControl.numberOfPages = Int(ceil(Float(sectionCount) / 8))
             let row = indexPath.row
             if row < 6 {
                 pageControl.currentPage = 0
             } else {
-                pageControl.currentPage = row % 6 == 0 ? Int(ceil(Float(row - 1) / 6)) : (row - 1) / 6
+                pageControl.currentPage = row % 8 == 0 ? Int(ceil(Float(row - 1) / 8)) : (row - 1) / 8
             }
         }
     }
@@ -137,14 +150,14 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         let sectionCount = self.itemCollectionView.numberOfItems(inSection: indexPath.section)
         
         // 총 페이지 카운트
-        pageControl.numberOfPages = Int(ceil(Float(sectionCount) / 6))
+        pageControl.numberOfPages = Int(ceil(Float(sectionCount) / 8))
         
         let row = indexPath.row
         
-        if row < 6 {
+        if row < 8 {
             pageControl.currentPage = 0
         } else {
-            pageControl.currentPage = row % 6 == 0 ? Int(ceil(Float(row - 1) / 6)) : (row - 1) / 6
+            pageControl.currentPage = row % 8 == 0 ? Int(ceil(Float(row - 1) / 8)) : (row - 1) / 8
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
