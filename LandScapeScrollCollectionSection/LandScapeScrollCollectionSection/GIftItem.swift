@@ -13,10 +13,11 @@ class GiftItem: UICollectionViewCell {
     
     static let identifier = description()
     
-    var model: ItemModel?
+    var model: mockItemModel?
     
     lazy var backView: UIView = .init().then {
         $0.backgroundColor = .white
+        $0.sizeToFit()
     }
     
     lazy var itemLabel: UILabel = UILabel().then {
@@ -84,7 +85,7 @@ class GiftItem: UICollectionViewCell {
         
     }
     
-    func setConfig(model: ItemModel) {
+    func setConfig(model: mockItemModel) {
         self.model = model
         setupUI()
         

@@ -1,36 +1,16 @@
 //
-//  ViewController.swift
+//  PresentView.swift
 //  LandScapeScrollCollectionSection
 //
-//  Created by root0 on 2022/06/09.
+//  Created by root0 on 2022/06/15.
 //
 
+import Foundation
 import UIKit
 import SnapKit
 import Then
 
-class ViewController: UIViewController {
-    
-    override var shouldAutorotate: Bool {
-        return true
-    }
-    
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-//        if let layout = itemCollectionView.collectionViewLayout as? SectionHorizontalFlowLayout {
-//            layout.cache.removeAll()
-//            layout.prepare()
-//        }
-    }
-    
-    lazy var plateView: UIView = UIView().then {
-        $0.backgroundColor = .gray
-    }
-    
-    lazy var firstLabel: UILabel = UILabel().then {
-        $0.text = "First Init22"
-        $0.textColor = .white
-    }
+class PresentView: UIView {
     
     lazy var itemPlateView: UIView = UIView().then {
         $0.backgroundColor = .black
@@ -83,19 +63,21 @@ class ViewController: UIViewController {
     
     var viewModel: GiftItemViewModel = GiftItemViewModel()
     
-    var itemList: [ItemModel] = []
-    var itemCategory: [ItemCategoryData] = []
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
-        addSnapView()
-        itemCollectionView.delegate = self
-        itemCollectionView.dataSource = self
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        [categoryArticle, bottomMenuView, itemCollectionView, pageArticle].forEach {
+            addSubview($0)
+        }
+        setItemPlateConstraint()
         
         setPageControll(indexPath: IndexPath(row: 0, section: 0))
         
+        itemCollectionView.delegate = self
+        itemCollectionView.dataSource = self
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
     
     
@@ -108,9 +90,63 @@ class ViewController: UIViewController {
         print(sender.title(for: .normal) ?? "empty")
     }
     
+    func setItemPlateConstraint() {
+        
+        itemPlateView.snp.remakeConstraints {
+            $0.bottom.equalToSuperview()
+            $0.centerX.equalToSuperview()
+            $0.height.equalTo(203)
+            $0.leading.equalToSuperview().offset(35)
+        }
+        
+        categoryArticle.snp.remakeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalToSuperview()
+            $0.leading.equalToSuperview().offset(20)
+            $0.height.equalTo(36)
+        }
+        
+        bottomMenuView.snp.remakeConstraints {
+            $0.bottom.equalTo(itemPlateView.safeAreaInsets.bottom).offset(-20)
+            $0.centerX.equalToSuperview()
+            $0.height.equalTo(36)
+            $0.width.equalToSuperview().offset(-40)
+        }
+        
+        itemCollectionView.snp.remakeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.leading.equalToSuperview().offset(20)
+            $0.bottom.equalTo(bottomMenuView.snp.top).offset(-15)
+            
+            $0.top.equalTo(categoryArticle.snp.bottom).offset(4)
+        }
+        
+        viewModel.mockitemCategory.forEach { category in
+            let btn = UIButton()
+            btn.isUserInteractionEnabled = true
+            btn.setTitle(category, for: .normal)
+            btn.addTarget(self, action: #selector(mngStackBtn(_:)), for: .touchUpInside)
+            btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 19)
+            btn.titleLabel?.sizeToFit()
+            
+            categoryStack.addArrangedSubview(btn)
+            btn.snp.remakeConstraints { make in
+                make.height.equalToSuperview()
+                make.width.equalTo(btn.titleLabel!.snp.width).offset(10)
+            }
+        }
+        
+        pageArticle.snp.remakeConstraints {
+            $0.bottom.equalTo(bottomMenuView.snp.top)
+            $0.centerX.equalToSuperview()
+            $0.leading.equalToSuperview()
+            $0.top.equalTo(itemCollectionView.snp.bottom)
+        }
+    }
+    
 }
 
-extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension PresentView: UICollectionViewDelegate, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return viewModel.mockitemCategory.count
     }
@@ -172,7 +208,4 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 //            self.setCategoryLine(section: indexPath.section)
         })
     }
-    
-    
-    
 }

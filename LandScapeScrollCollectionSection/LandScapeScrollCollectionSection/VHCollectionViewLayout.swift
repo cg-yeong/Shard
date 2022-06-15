@@ -34,6 +34,7 @@ public class SectionHorizontalFlowLayout: UICollectionViewFlowLayout {
     var startSectionIndex : [Int] = [] // 전체 페이지인덱스중 각 섹션의 시작 인덱스
     
     public override func prepare() {
+        
         guard cache.isEmpty , let collection = collectionView else {
             return
         }
@@ -94,7 +95,6 @@ public class SectionHorizontalFlowLayout: UICollectionViewFlowLayout {
         
         let oldSize = collectionView.bounds.size
         guard oldSize != newBounds.size else { return false }
-        print("oldsize != newBound Size : \(oldSize), \(newBounds)")
         cache.removeAll()
         // cache 지우면 prepare
         return true

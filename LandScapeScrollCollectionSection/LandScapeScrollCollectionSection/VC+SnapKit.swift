@@ -15,15 +15,12 @@ extension ViewController {
         view.addSubview(plateView)
         plateView.addSubview(firstLabel)
         plateView.addSubview(itemPlateView)
+        
         itemPlateView.addSubview(categoryArticle)
         itemPlateView.addSubview(bottomMenuView)
         itemPlateView.addSubview(itemCollectionView)
         itemPlateView.addSubview(pageArticle)
         
-        setConstraint()
-    }
-    
-    func setConstraint() {
         plateView.snp.remakeConstraints {
             $0.leading.trailing.top.bottom.equalToSuperview()
         }
@@ -61,7 +58,7 @@ extension ViewController {
             $0.top.equalTo(categoryArticle.snp.bottom).offset(4)
         }
         
-        viewModel.itemCategory.forEach { category in
+        viewModel.mockitemCategory.forEach { category in
             let btn = UIButton()
             btn.isUserInteractionEnabled = true
             btn.setTitle(category, for: .normal)
@@ -83,4 +80,5 @@ extension ViewController {
             $0.top.equalTo(itemCollectionView.snp.bottom)
         }
     }
+    
 }
