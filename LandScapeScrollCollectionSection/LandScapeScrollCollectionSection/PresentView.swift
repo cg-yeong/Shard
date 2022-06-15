@@ -9,8 +9,13 @@ import Foundation
 import UIKit
 import SnapKit
 import Then
+import RxSwift
 
 class PresentView: UIView {
+    
+    lazy var backgroundView = UIView().then {
+        $0.backgroundColor = .clear
+    }
     
     lazy var itemPlateView: UIView = UIView().then {
         $0.backgroundColor = .black
@@ -62,18 +67,20 @@ class PresentView: UIView {
     }
     
     var viewModel: GiftItemViewModel = GiftItemViewModel()
+    let bag = DisposeBag()
+    
+    var itemList: [ItemModel] = []
+    var itemCategories: [ItemCategoryData] = []
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        [categoryArticle, bottomMenuView, itemCollectionView, pageArticle].forEach {
-            addSubview($0)
-        }
-        setItemPlateConstraint()
-        
-        setPageControll(indexPath: IndexPath(row: 0, section: 0))
-        
+        addSnapView()
+        setConstraint()
+        bind()
         itemCollectionView.delegate = self
         itemCollectionView.dataSource = self
+        
+        setPageControll(indexPath: IndexPath(row: 0, section: 0))
     }
     
     required init?(coder: NSCoder) {
@@ -81,17 +88,30 @@ class PresentView: UIView {
     }
     
     
-    
-    @objc func mngStackBtn(_ sender: UIButton) {
-        guard viewModel.mockitemCategory.contains(sender.title(for: .normal) ?? "") else { return }
-        let sectionIndex = viewModel.mockitemCategory.firstIndex(of: sender.title(for: .normal) ?? "") ?? 0
-        setPageControll(indexPath: IndexPath(item: 0, section: sectionIndex))
+    func addSnapView() {
+        addSubview(backgroundView)
+        addSubview(itemPlateView)
+        itemPlateView.addSubview(categoryArticle)
+        itemPlateView.addSubview(bottomMenuView)
+        itemPlateView.addSubview(itemCollectionView)
+        itemPlateView.addSubview(pageArticle)
         
-        print(sender.title(for: .normal) ?? "empty")
     }
     
-    func setItemPlateConstraint() {
-        
+    func bind() {
+        let otherTap = UITapGestureRecognizer()
+        backgroundView.addGestureRecognizer(otherTap)
+        otherTap.rx.event
+            .bind { [weak self] _ in
+                self?.isHidden = true
+            }
+            .disposed(by: bag)
+    }
+    
+    func setConstraint() {
+        backgroundView.snp.remakeConstraints {
+            $0.edges.equalToSuperview()
+        }
         itemPlateView.snp.remakeConstraints {
             $0.bottom.equalToSuperview()
             $0.centerX.equalToSuperview()
@@ -107,7 +127,7 @@ class PresentView: UIView {
         }
         
         bottomMenuView.snp.remakeConstraints {
-            $0.bottom.equalTo(itemPlateView.safeAreaInsets.bottom).offset(-20)
+            $0.bottom.equalTo(self.safeAreaInsets.bottom).offset(-20)
             $0.centerX.equalToSuperview()
             $0.height.equalTo(36)
             $0.width.equalToSuperview().offset(-40)
@@ -144,15 +164,30 @@ class PresentView: UIView {
         }
     }
     
+    @objc func mngStackBtn(_ sender: UIButton) {
+        guard viewModel.mockitemCategory.contains(sender.title(for: .normal) ?? "") else { return }
+        let sectionIndex = viewModel.mockitemCategory.firstIndex(of: sender.title(for: .normal) ?? "") ?? 0
+        setPageControll(indexPath: IndexPath(item: 0, section: sectionIndex))
+        
+        print(sender.title(for: .normal) ?? "empty")
+    }
 }
 
 extension PresentView: UICollectionViewDelegate, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return viewModel.mockitemCategory.count
+        return viewModel.itemModel?.itemCategories?.count ?? 0//viewModel.mockitemCategory.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard viewModel.itemModel != nil else { return 0 }
+        print("numberofItemsinSeciton")
+        let filtered = viewModel.itemModel!.items!
+            .filter { (model) -> Bool in
+                return model.category == viewModel.itemModel!.itemCategories?[section].code && model.visibility == true && model.type != "direct"
+        }
+        print(filtered.count)
         return viewModel.mockitems[viewModel.mockitemCategory[section]]?.count ?? 0
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
