@@ -84,7 +84,7 @@ class GiftItem: UICollectionViewCell {
         backgroundColor = .lightGray
         addSubview(backView)
         
-        backView.addSubview(itemLabel)
+//        backView.addSubview(itemLabel)
         backView.addSubview(itemImg)
         backView.addSubview(pricePart)
         setConstraint()
@@ -107,11 +107,11 @@ class GiftItem: UICollectionViewCell {
             $0.centerX.equalToSuperview()
             $0.top.equalTo(itemImg.snp.bottom)
         }
-        itemLabel.snp.remakeConstraints { item in
-            item.width.height.equalTo(70)
-            item.centerX.equalToSuperview()
-            item.top.equalToSuperview()
-        }
+//        itemLabel.snp.remakeConstraints { item in
+//            item.width.height.equalTo(70)
+//            item.centerX.equalToSuperview()
+//            item.top.equalToSuperview()
+//        }
         
     }
     

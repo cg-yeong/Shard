@@ -63,6 +63,8 @@ class ViewController: UIViewController {
                 self.presentView.itemCategories = model.itemCategories ?? []
                 self.presentView.itemList = model.items ?? []
                 self.presentView.itemCollectionView.reloadData()
+                self.presentView.setviewModelData()
+                self.presentView.setPageControll(indexPath: IndexPath(item: 0, section: 0))
             }
             .disposed(by: bag)
         

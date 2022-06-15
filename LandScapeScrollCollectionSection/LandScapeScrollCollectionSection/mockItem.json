@@ -1,6 +1,6 @@
 [
     {
-        "type" : "general",
+        "type" : "normal",
         "items" : [
         {
             "name" : "carrot",
@@ -227,7 +227,7 @@
             "price" : 2
         }
     ]},
-    {"type" : "lettering",
+    {"type" : "text",
         "items" :  [
         {
             "name" : "awfeawef",

@@ -141,12 +141,14 @@ class PresentView: UIView {
             $0.top.equalTo(categoryArticle.snp.bottom).offset(4)
         }
         
-        viewModel.mockitemCategory.forEach { category in
+//        viewModel.mockitemCategory.forEach { category in
+        itemCategories.forEach { category in
+            let category = category.value
             let btn = UIButton()
             btn.isUserInteractionEnabled = true
             btn.setTitle(category, for: .normal)
             btn.addTarget(self, action: #selector(mngStackBtn(_:)), for: .touchUpInside)
-            btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 19)
+            btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
             btn.titleLabel?.sizeToFit()
             
             categoryStack.addArrangedSubview(btn)
@@ -155,6 +157,7 @@ class PresentView: UIView {
                 make.width.equalTo(btn.titleLabel!.snp.width).offset(10)
             }
         }
+        
         
         pageArticle.snp.remakeConstraints {
             $0.bottom.equalTo(bottomMenuView.snp.top)
@@ -165,11 +168,31 @@ class PresentView: UIView {
     }
     
     @objc func mngStackBtn(_ sender: UIButton) {
-        guard viewModel.mockitemCategory.contains(sender.title(for: .normal) ?? "") else { return }
-        let sectionIndex = viewModel.mockitemCategory.firstIndex(of: sender.title(for: .normal) ?? "") ?? 0
+//        guard viewModel.mockitemCategory.contains(sender.title(for: .normal) ?? "") else { return }
+        let sectionIndex = itemCategories.map({ $0.code }).firstIndex(of: sender.title(for: .normal) ?? "") ?? 0
+//        let sectionIndex = viewModel.mockitemCategory.firstIndex(of: sender.title(for: .normal) ?? "") ?? 0
         setPageControll(indexPath: IndexPath(item: 0, section: sectionIndex))
         
         print(sender.title(for: .normal) ?? "empty")
+    }
+    
+    func setviewModelData() {
+        guard viewModel.itemModel?.itemCategories != nil else { return }
+        viewModel.itemModel?.itemCategories!.forEach { category in
+            let category = category.code
+            let btn = UIButton()
+            btn.isUserInteractionEnabled = true
+            btn.setTitle(category, for: .normal)
+            btn.addTarget(self, action: #selector(mngStackBtn(_:)), for: .touchUpInside)
+            btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
+            btn.titleLabel?.sizeToFit()
+            
+            categoryStack.addArrangedSubview(btn)
+            btn.snp.remakeConstraints { make in
+                make.height.equalToSuperview()
+                make.width.equalTo(btn.titleLabel!.snp.width).offset(10)
+            }
+        }
     }
 }
 
@@ -186,17 +209,19 @@ extension PresentView: UICollectionViewDelegate, UICollectionViewDataSource {
                 return model.category == viewModel.itemModel!.itemCategories?[section].code && model.visibility == true && model.type != "direct"
         }
         print(filtered.count)
-        return viewModel.mockitems[viewModel.mockitemCategory[section]]?.count ?? 0
+        return filtered.count//viewModel.mockitems[viewModel.mockitemCategory[section]]?.count ?? 0
         
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GiftItem.identifier, for: indexPath) as? GiftItem else { return UICollectionViewCell() }
-        guard let dataof = viewModel.mockitems[viewModel.mockitemCategory[indexPath.section]] else {
-            return UICollectionViewCell()
-        }
+//        guard let dataof = viewModel.mockitems[viewModel.mockitemCategory[indexPath.section]] else {
+        let dataof = viewModel.filtered.filter({ (model) -> Bool in
+                return model.category == itemCategories[indexPath.section].code
+            }).sorted(by: { $0.sortNo < $1.sortNo })
         let data = dataof[indexPath.row]
-        cell.setConfig(model: data)
+//        cell.setConfig(model: data)
+        cell.setConfig_Dal(model: data)
         
         return cell
     }
