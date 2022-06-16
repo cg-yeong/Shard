@@ -23,6 +23,7 @@
 		667ACB5E2852E364001514C8 /* VHCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ACB5D2852E364001514C8 /* VHCollectionViewLayout.swift */; };
 		668AF38328586E3A00F88EF4 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668AF38228586E3A00F88EF4 /* ItemModel.swift */; };
 		668AF385285996F700F88EF4 /* PresentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668AF384285996F700F88EF4 /* PresentView.swift */; };
+		668AF3872859D84E00F88EF4 /* PresentView+Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668AF3862859D84E00F88EF4 /* PresentView+Collection.swift */; };
 		8588D84AD639F332E311D833 /* Pods_LandScapeScrollCollectionSectionTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1164E64BC29852F6922A0AA3 /* Pods_LandScapeScrollCollectionSectionTests.framework */; };
 		94C5D05F7CF484A0C658CF6B /* Pods_LandScapeScrollCollectionSection_LandScapeScrollCollectionSectionUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BEF4391F3BF002A819FA2D8 /* Pods_LandScapeScrollCollectionSection_LandScapeScrollCollectionSectionUITests.framework */; };
 		BBAA46F392ED2FD737152C56 /* Pods_LandScapeScrollCollectionSection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78149A8B950B744D0280EC8E /* Pods_LandScapeScrollCollectionSection.framework */; };
@@ -70,6 +71,7 @@
 		667ACB5D2852E364001514C8 /* VHCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VHCollectionViewLayout.swift; sourceTree = "<group>"; };
 		668AF38228586E3A00F88EF4 /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 		668AF384285996F700F88EF4 /* PresentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentView.swift; sourceTree = "<group>"; };
+		668AF3862859D84E00F88EF4 /* PresentView+Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PresentView+Collection.swift"; sourceTree = "<group>"; };
 		78149A8B950B744D0280EC8E /* Pods_LandScapeScrollCollectionSection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LandScapeScrollCollectionSection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DA1DF8BD7733BC53D60B519 /* Pods-LandScapeScrollCollectionSection.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LandScapeScrollCollectionSection.release.xcconfig"; path = "Target Support Files/Pods-LandScapeScrollCollectionSection/Pods-LandScapeScrollCollectionSection.release.xcconfig"; sourceTree = "<group>"; };
 		A8E7E33A4D678BF6829B9B48 /* Pods-LandScapeScrollCollectionSection-LandScapeScrollCollectionSectionUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LandScapeScrollCollectionSection-LandScapeScrollCollectionSectionUITests.debug.xcconfig"; path = "Target Support Files/Pods-LandScapeScrollCollectionSection-LandScapeScrollCollectionSectionUITests/Pods-LandScapeScrollCollectionSection-LandScapeScrollCollectionSectionUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				667ACB272851CAC2001514C8 /* ViewController.swift */,
 				667ACB532851CC97001514C8 /* VC+SnapKit.swift */,
 				668AF384285996F700F88EF4 /* PresentView.swift */,
+				668AF3862859D84E00F88EF4 /* PresentView+Collection.swift */,
 				667ACB5D2852E364001514C8 /* VHCollectionViewLayout.swift */,
 				667ACB5B2852C6EE001514C8 /* GiftItemViewModel.swift */,
 				668AF38228586E3A00F88EF4 /* ItemModel.swift */,
@@ -434,6 +437,7 @@
 				668AF38328586E3A00F88EF4 /* ItemModel.swift in Sources */,
 				667ACB542851CC97001514C8 /* VC+SnapKit.swift in Sources */,
 				667ACB5E2852E364001514C8 /* VHCollectionViewLayout.swift in Sources */,
+				668AF3872859D84E00F88EF4 /* PresentView+Collection.swift in Sources */,
 				667ACB5C2852C6EE001514C8 /* GiftItemViewModel.swift in Sources */,
 				667ACB242851CAC2001514C8 /* AppDelegate.swift in Sources */,
 				667ACB262851CAC2001514C8 /* SceneDelegate.swift in Sources */,
