@@ -81,7 +81,6 @@ class GiftItem: UICollectionViewCell {
     }
     
     func setupUI() {
-        backgroundColor = .lightGray
         addSubview(backView)
         
 //        backView.addSubview(itemLabel)

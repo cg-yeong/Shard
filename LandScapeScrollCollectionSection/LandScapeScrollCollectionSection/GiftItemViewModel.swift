@@ -55,23 +55,19 @@ class GiftItemViewModel {
     func requestItemDalla() {
         
         let defaultHttpHeaders: HTTPHeaders = ["authToken" : authToken, "custom-header" : customHeaderStr]
-        
-        AF.request(URL(string: "https://devapi.dalbitlive.com/items") ?? "", method: HTTPMethod.get, parameters: nil, encoding: URLEncoding.default, headers: defaultHttpHeaders).responseData { [weak self] response in
-//            print(response)
+        AF.request(URL(string: "") ?? "", method: HTTPMethod.get, parameters: nil, encoding: URLEncoding.default, headers: defaultHttpHeaders).responseData { [weak self] response in
             guard let self = self else { return }
             let decoder = JSONDecoder()
             do {
                 switch response.result {
                 case .success(let data):
                     let json = JSON(data)
-    //                print(json)
                     let itemListModel = try decoder.decode(ItemListModel.self, from: data)
                     if itemListModel.result == "success", let itemListData = itemListModel.data {
                         self.itemModel = itemListData
                         self.im.onNext(itemListData)
                         
                         self.itemFiltering()
-                        
                     }
                 case .failure(let err):
                     self.requestItemDalla()

@@ -32,6 +32,7 @@ class PresentView: UIView {
             $0.width.lessThanOrEqualTo(article.frameLayoutGuide).priority(.low)
             $0.height.equalToSuperview()
         }
+        article.addSubview(categoryLine)
     }
     lazy var categoryStack: UIStackView = UIStackView().then {
         $0.spacing = 0
@@ -49,7 +50,6 @@ class PresentView: UIView {
     lazy var itemCollectionView: UICollectionView = .init(frame: .zero, collectionViewLayout: SectionHorizontalFlowLayout()).then {
         $0.decelerationRate = .fast
         $0.isPagingEnabled = true
-        $0.backgroundColor = .orange
         $0.showsHorizontalScrollIndicator = false
         $0.showsVerticalScrollIndicator = false
         $0.register(GiftItem.self, forCellWithReuseIdentifier: GiftItem.identifier)
@@ -61,7 +61,6 @@ class PresentView: UIView {
     }
     lazy var pageArticle: UIView = .init().then {
         $0.addSubview(pageControl)
-        $0.backgroundColor = .darkGray
         pageControl.snp.remakeConstraints {
             $0.height.equalTo(10)
             $0.center.equalToSuperview()
@@ -112,6 +111,12 @@ class PresentView: UIView {
                 self?.isHidden = true
             }
             .disposed(by: bag)
+        
+        viewModel.im.bind { [weak self] _ in
+            guard let self = self else { return }
+            print("알리얄라")
+            self.setviewModelData()
+        }.disposed(by: bag)
     }
     
     func setConstraint() {
@@ -163,7 +168,7 @@ class PresentView: UIView {
 //                make.width.equalTo(btn.titleLabel!.snp.width).offset(10)
 //            }
 //        }
-        setviewModelData()
+        //setviewModelData()
         
         
         pageArticle.snp.remakeConstraints {
@@ -178,35 +183,74 @@ class PresentView: UIView {
 }
 
 extension PresentView {
-    @objc func mngStackBtn(_ sender: UIButton) {
-//        guard viewModel.mockitemCategory.contains(sender.title(for: .normal) ?? "") else { return }
-        let sectionIndex = itemCategories.map({ $0.code }).firstIndex(of: sender.title(for: .normal) ?? "") ?? 0
-//        let sectionIndex = viewModel.mockitemCategory.firstIndex(of: sender.title(for: .normal) ?? "") ?? 0
-        setPageControll(indexPath: IndexPath(item: 0, section: sectionIndex))
-        sender.isSelected = !sender.isSelected
-        if sender.state == .selected {
-            sender.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
-        } else {
-            sender.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+    
+    func setPageControl() {
+        if let indexPath = self.itemCollectionView.indexPathsForVisibleItems.first, indexPath.section < self.itemCollectionView.numberOfSections {
+            let sectionCount = self.itemCollectionView.numberOfItems(inSection: indexPath.section)
+            self.setCategoryLine(section: indexPath.section)
+            // 총 페이지 카운트
+            pageControl.numberOfPages = Int(ceil(Float(sectionCount) / 8))
+            let row = indexPath.row
+            if row < 6 {
+                pageControl.currentPage = 0
+            } else {
+                pageControl.currentPage = row % 8 == 0 ? Int(ceil(Float(row - 1) / 8)) : (row - 1) / 8
+            }
+            
         }
+    }
+    // 선택한 인덱스가 있고 해당 인덱스로 이동할 경우
+    func setPageControll(indexPath: IndexPath) {
+        if indexPath.section >= self.itemCollectionView.numberOfSections {
+            return
+        }
+        
+        let sectionCount = self.itemCollectionView.numberOfItems(inSection: indexPath.section)
+        
+        // 총 페이지 카운트
+        pageControl.numberOfPages = Int(ceil(Float(sectionCount) / 8))
+        
+        let row = indexPath.row
+        
+        if row < 8 {
+            pageControl.currentPage = 0
+        } else {
+            pageControl.currentPage = row % 8 == 0 ? Int(ceil(Float(row - 1) / 8)) : (row - 1) / 8
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+            self.itemCollectionView.scrollToItem(at: indexPath, at: .left, animated: true)
+            self.setCategoryLine(section: indexPath.section)
+        })
+    }
+    
+    @objc func mngStackBtn(_ sender: UIButton) {
+        let sectionIndex = viewModel.itemModel?.itemCategories!.map({ $0.code }).firstIndex(of: sender.title(for: .normal) ?? "") ?? 0
+        setPageControll(indexPath: IndexPath(item: 0, section: sectionIndex))
+        
+//        categoryLine.snp.remakeConstraints {
+//            $0.width.equalTo(20)
+//            $0.height.equalTo(4)
+//            $0.centerX.equalTo(sender)
+//            $0.bottom.equalTo(sender)
+//        }
         print(sender.title(for: .normal) ?? "empty")
     }
     
     func setviewModelData() {
         guard viewModel.itemModel?.itemCategories != nil else { return }
-        viewModel.itemModel?.itemCategories!.forEach { category in
-            let category = category.code
+        viewModel.itemModel?.itemCategories!.enumerated().forEach { idx, val in
+            
+            let category = val.code
             let btn = UIButton()
+            btn.tag = 450 + idx + 1
             btn.isUserInteractionEnabled = true
             btn.setTitle(category, for: .normal)
-            btn.setTitle(category, for: .selected)
-            btn.setTitleColor(.white, for: .normal)
-            btn.setTitleColor(UIColor(red: 172/255, green: 172/255, blue: 172/255, alpha: 1), for: .selected)
+            btn.setTitleColor(UIColor(red: 172/255, green: 172/255, blue: 172/255, alpha: 1), for: .normal)
             btn.addTarget(self, action: #selector(mngStackBtn(_:)), for: .touchUpInside)
             btn.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .regular)
             
             btn.titleLabel?.sizeToFit()
-            
             
             categoryStack.addArrangedSubview(btn)
             btn.snp.remakeConstraints { make in
@@ -217,11 +261,23 @@ extension PresentView {
     }
     
     func setCategoryLine(section: Int) {
-//        categoryStack.arrangedSubviews.firstin
+        guard let categoryBtn = categoryStack.viewWithTag(451 + section) as? UIButton else { return }
+        
+        categoryStack.arrangedSubviews.enumerated().forEach { [weak self] idx, uiv in
+            guard let cateBtn = uiv as? UIButton else { return }
+            if idx == section {
+                cateBtn.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .bold)
+                cateBtn.setTitleColor(.white, for: .normal)
+            } else {
+                cateBtn.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+                cateBtn.setTitleColor(UIColor(red: 172/255, green: 172/255, blue: 172/255, alpha: 1), for: .normal)
+            }
+        }
         categoryLine.snp.remakeConstraints {
             $0.width.equalTo(20)
             $0.height.equalTo(4)
-            $0.bottom.equalToSuperview()
+            $0.centerX.equalTo(categoryBtn)
+            $0.bottom.equalTo(categoryBtn)
         }
     }
 }

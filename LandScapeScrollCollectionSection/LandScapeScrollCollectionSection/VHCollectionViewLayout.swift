@@ -24,7 +24,6 @@ public class SectionHorizontalFlowLayout: UICollectionViewFlowLayout {
     }
     
     private var itemPerRow = 8
-    private var itemHeight: CGFloat = 92
     
     private var boundsSize = CGSize(width: 0, height: 0)
     

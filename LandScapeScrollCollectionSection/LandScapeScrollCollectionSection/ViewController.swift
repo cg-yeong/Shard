@@ -57,13 +57,11 @@ class ViewController: UIViewController {
         openPresentView.rx.event
             .bind { [weak self] _ in
                 guard let self = self else { return }
-                print("tap \(self.viewModel.itemModel == nil)")
-                guard let model = self.viewModel.itemModel else { return }
+                print("tap impossible \(self.viewModel.itemModel == nil)")
                 self.presentView.isHidden = false
-                self.presentView.itemCategories = model.itemCategories ?? []
-                self.presentView.itemList = model.items ?? []
+                //self.presentView.itemCategories = model.itemCategories ?? []
+                //self.presentView.itemList = model.items ?? []
                 self.presentView.itemCollectionView.reloadData()
-                self.presentView.setviewModelData()
                 self.presentView.setPageControll(indexPath: IndexPath(item: 0, section: 0))
             }
             .disposed(by: bag)
