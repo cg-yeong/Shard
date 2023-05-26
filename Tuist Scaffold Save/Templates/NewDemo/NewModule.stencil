@@ -1,0 +1,13 @@
+import ProjectDescription
+import ProjectDescriptionHelpers
+import DefaultSetting
+
+// 데모앱 타겟 : 데모앱 의존성은 데모 프레임워크로 
+let demoTargets = Project._makeDemoAppTargets(name: "{{ name }}",
+                                         platform: .iOS,
+                                         dependencies: [Dependency.DemoFramework.feature, Dependency.Framework.shared] )
+
+let project = Project(name: "{{ name }}",
+                      organizationName: DefaultSettings._PROJECT_NAME_,
+                      targets: demoTargets)
+

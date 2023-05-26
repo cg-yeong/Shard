@@ -1,0 +1,33 @@
+import Foundation
+
+public struct {{ name }}ViewModelActions {
+    
+}
+
+public protocol {{ name }}ViewModelInput {
+    
+}
+
+public protocol {{ name }}ViewModelOutput {
+    
+}
+
+public protocol {{ name }}ViewModel: {{ name }}ViewModelInput, {{ name }}ViewModelOutput {
+    
+}
+
+open class Default{{ name }}ViewModel: {{ name }}ViewModel {
+    let actions: {{ name }}ViewModelActions?
+    
+    public init(actions: {{ name }}ViewModelActions? = nil) {
+        self.actions = actions
+    }
+    
+    deinit {
+        dump(self)
+    }
+}
+
+extension Default{{ name }}ViewModel {
+    
+}

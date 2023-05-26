@@ -1,0 +1,18 @@
+import UIKit
+
+open class {{ name }}ViewController: UIViewController {
+
+    var viewModel: {{ name }}ViewModel!
+    
+    public class func create(with viewModel: {{ name }}ViewModel) -> {{ name }}ViewController {
+        let vc = self.init()
+        vc.viewModel = viewModel
+        
+        return vc
+    }
+    
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}
+
