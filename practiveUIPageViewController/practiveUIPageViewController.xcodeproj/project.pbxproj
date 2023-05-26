@@ -16,6 +16,15 @@
 		666CB04129FBB86800847CED /* practiveUIPageViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666CB04029FBB86800847CED /* practiveUIPageViewControllerTests.swift */; };
 		666CB04B29FBB86800847CED /* practiveUIPageViewControllerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666CB04A29FBB86800847CED /* practiveUIPageViewControllerUITests.swift */; };
 		666CB04D29FBB86800847CED /* practiveUIPageViewControllerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666CB04C29FBB86800847CED /* practiveUIPageViewControllerUITestsLaunchTests.swift */; };
+		666CB05A2A00838E00847CED /* TinderCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666CB0592A00838E00847CED /* TinderCard.swift */; };
+		666CB05D2A00875300847CED /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 666CB05C2A00875300847CED /* SnapKit */; };
+		666CB05F2A00875300847CED /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 666CB05E2A00875300847CED /* SnapKit-Dynamic */; };
+		666CB0622A00877D00847CED /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 666CB0612A00877D00847CED /* Then */; };
+		666CB0642A00E7EF00847CED /* TinderSwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666CB0632A00E7EF00847CED /* TinderSwipeView.swift */; };
+		666CB0662A02383B00847CED /* MirrorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666CB0652A02383B00847CED /* MirrorButton.swift */; };
+		666CB0692A0238F500847CED /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 666CB0682A0238F500847CED /* RxCocoa */; };
+		666CB06B2A0238F500847CED /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 666CB06A2A0238F500847CED /* RxRelay */; };
+		666CB06D2A0238F500847CED /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 666CB06C2A0238F500847CED /* RxSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +58,9 @@
 		666CB04629FBB86800847CED /* practiveUIPageViewControllerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = practiveUIPageViewControllerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		666CB04A29FBB86800847CED /* practiveUIPageViewControllerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = practiveUIPageViewControllerUITests.swift; sourceTree = "<group>"; };
 		666CB04C29FBB86800847CED /* practiveUIPageViewControllerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = practiveUIPageViewControllerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		666CB0592A00838E00847CED /* TinderCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinderCard.swift; sourceTree = "<group>"; };
+		666CB0632A00E7EF00847CED /* TinderSwipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinderSwipeView.swift; sourceTree = "<group>"; };
+		666CB0652A02383B00847CED /* MirrorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirrorButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				666CB06D2A0238F500847CED /* RxSwift in Frameworks */,
+				666CB06B2A0238F500847CED /* RxRelay in Frameworks */,
+				666CB05D2A00875300847CED /* SnapKit in Frameworks */,
+				666CB0622A00877D00847CED /* Then in Frameworks */,
+				666CB0692A0238F500847CED /* RxCocoa in Frameworks */,
+				666CB05F2A00875300847CED /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +117,9 @@
 		666CB02829FBB86600847CED /* practiveUIPageViewController */ = {
 			isa = PBXGroup;
 			children = (
+				666CB0592A00838E00847CED /* TinderCard.swift */,
+				666CB0632A00E7EF00847CED /* TinderSwipeView.swift */,
+				666CB0652A02383B00847CED /* MirrorButton.swift */,
 				666CB02929FBB86600847CED /* AppDelegate.swift */,
 				666CB02B29FBB86600847CED /* SceneDelegate.swift */,
 				666CB02D29FBB86600847CED /* ViewController.swift */,
@@ -143,6 +164,14 @@
 			dependencies = (
 			);
 			name = practiveUIPageViewController;
+			packageProductDependencies = (
+				666CB05C2A00875300847CED /* SnapKit */,
+				666CB05E2A00875300847CED /* SnapKit-Dynamic */,
+				666CB0612A00877D00847CED /* Then */,
+				666CB0682A0238F500847CED /* RxCocoa */,
+				666CB06A2A0238F500847CED /* RxRelay */,
+				666CB06C2A0238F500847CED /* RxSwift */,
+			);
 			productName = practiveUIPageViewController;
 			productReference = 666CB02629FBB86600847CED /* practiveUIPageViewController.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +244,11 @@
 				Base,
 			);
 			mainGroup = 666CB01D29FBB86600847CED;
+			packageReferences = (
+				666CB05B2A00875300847CED /* XCRemoteSwiftPackageReference "SnapKit" */,
+				666CB0602A00877D00847CED /* XCRemoteSwiftPackageReference "Then" */,
+				666CB0672A0238F500847CED /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = 666CB02729FBB86600847CED /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -258,9 +292,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				666CB0662A02383B00847CED /* MirrorButton.swift in Sources */,
 				666CB02E29FBB86600847CED /* ViewController.swift in Sources */,
 				666CB02A29FBB86600847CED /* AppDelegate.swift in Sources */,
 				666CB02C29FBB86600847CED /* SceneDelegate.swift in Sources */,
+				666CB0642A00E7EF00847CED /* TinderSwipeView.swift in Sources */,
+				666CB05A2A00838E00847CED /* TinderCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -602,6 +639,66 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		666CB05B2A00875300847CED /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		666CB0602A00877D00847CED /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		666CB0672A0238F500847CED /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		666CB05C2A00875300847CED /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 666CB05B2A00875300847CED /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		666CB05E2A00875300847CED /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 666CB05B2A00875300847CED /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+		666CB0612A00877D00847CED /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 666CB0602A00877D00847CED /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+		666CB0682A0238F500847CED /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 666CB0672A0238F500847CED /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		666CB06A2A0238F500847CED /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 666CB0672A0238F500847CED /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		666CB06C2A0238F500847CED /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 666CB0672A0238F500847CED /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 666CB01E29FBB86600847CED /* Project object */;
 }
