@@ -138,9 +138,37 @@ class YourChat: UICollectionViewCell {
         }
     }
     
-    func bind(with: R.MemberDummyChat) {
+    func bind(with: R.MemberDummyChat, isSameWithPrev: Bool = false) {
         profileImage.kf.setImage(with: URL(string: with.photo))
         name.text = with.name
         chat.text = with.chat
+        
+        let hiddenLayout = { [weak self] in
+            guard let self = self else { return }
+            self.profileView.isHidden = true
+            self.name.isHidden = true
+            self.bubble.snp.updateConstraints {
+                $0.top.equalTo(self.name.snp.bottom).offset(-21)
+            }
+        }
+        
+        let showLayout = { [weak self] in
+            guard let self = self else { return }
+            self.profileView.isHidden = false
+            self.name.isHidden = false
+            self.bubble.snp.updateConstraints {
+                $0.top.equalTo(self.name.snp.bottom).offset(4)
+            }
+            
+        }
+        
+//        _ = isSameWithPrev ? hiddenLayout() : showLayout()
+        
+    }
+    
+    func translateYProfileView(distant: CGFloat) {
+        UIView.animate(withDuration: 0.2) {
+            self.profileView.transform = CGAffineTransform(translationX: 0, y: distant)
+        }
     }
 }
