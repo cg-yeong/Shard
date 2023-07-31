@@ -97,7 +97,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
             let point = CGPoint(x: 0, y: chatCollectionView.contentOffset.y + chatCollectionView.bounds.size.height)
             
             if let indexPath = chatCollectionView.indexPathForItem(at: point), let sCell = chatCollectionView.cellForItem(at: indexPath) as? YourChat {
-                let dPoint = chatCollectionView.convert(CGPoint(x: 0, y: point.y - sCell.profileView.frame.size.height), to: sCell.contentView)
+                let dPoint = chatCollectionView.convert(CGPoint(x: 0, y: point.y - sCell.profileView.frame.size.height - 20), to: sCell.contentView)
                 //let dPoint = chatCollectionView.convert(point, to: sCell.contentView)
 //                print(dPoint)
                 let extraDistantProfile = sCell.container.frame.size.height - sCell.profileView.frame.size.height
@@ -110,7 +110,19 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, targetContentOffsetForProposedContentOffset proposedContentOffset: CGPoint) -> CGPoint {
-        <#code#>
+        
+        var offsetAdjustment: CGFloat = .greatestFiniteMagnitude
+        let verticalOffset = proposedContentOffset.y + collectionView.contentInset.top
+        let targetRect = CGRect(x: 0, y: proposedContentOffset.y, width: collectionView.bounds.size.width, height: collectionView.bounds.size.height)
+        let layoutAttributesArray = collectionView.collectionViewLayout.layoutAttributesForElements(in: targetRect)
+        layoutAttributesArray?.forEach({ (layoutAttributes) in
+            let itemOffset = layoutAttributes.frame.origin.y
+            if fabsf(Float(itemOffset - verticalOffset)) < fabsf(Float(offsetAdjustment)) {
+                offsetAdjustment = itemOffset - verticalOffset
+            }
+        })
+        
+        return CGPoint(x: proposedContentOffset.x, y: proposedContentOffset.y + offsetAdjustment)
     }
     
 }
