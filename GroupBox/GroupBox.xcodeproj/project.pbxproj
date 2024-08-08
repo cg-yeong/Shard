@@ -12,6 +12,9 @@
 		66C2A37E2C40E64900FA4601 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66C2A37D2C40E64900FA4601 /* Assets.xcassets */; };
 		66C2A3812C40E64900FA4601 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66C2A3802C40E64900FA4601 /* Preview Assets.xcassets */; };
 		66C36AC72C4DDA47004292BA /* KeyPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C36AC62C4DDA47004292BA /* KeyPad.swift */; };
+		66D64BC92C5B0E8900744FE6 /* KeyPadModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D64BC82C5B0E8900744FE6 /* KeyPadModel.swift */; };
+		66D64BCB2C5B13FA00744FE6 /* KeyPadIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D64BCA2C5B13FA00744FE6 /* KeyPadIntent.swift */; };
+		66D64BCE2C5B155D00744FE6 /* KeyPadContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D64BCD2C5B155D00744FE6 /* KeyPadContainer.swift */; };
 		66FAC7C32C539A23008C83A4 /* FastPayPasswordAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FAC7C22C539A23008C83A4 /* FastPayPasswordAuth.swift */; };
 /* End PBXBuildFile section */
 
@@ -22,6 +25,9 @@
 		66C2A37D2C40E64900FA4601 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		66C2A3802C40E64900FA4601 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		66C36AC62C4DDA47004292BA /* KeyPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPad.swift; sourceTree = "<group>"; };
+		66D64BC82C5B0E8900744FE6 /* KeyPadModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPadModel.swift; sourceTree = "<group>"; };
+		66D64BCA2C5B13FA00744FE6 /* KeyPadIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPadIntent.swift; sourceTree = "<group>"; };
+		66D64BCD2C5B155D00744FE6 /* KeyPadContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPadContainer.swift; sourceTree = "<group>"; };
 		66FAC7C22C539A23008C83A4 /* FastPayPasswordAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastPayPasswordAuth.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -59,6 +65,7 @@
 				66C2A37B2C40E64700FA4601 /* ContentView.swift */,
 				66FAC7C22C539A23008C83A4 /* FastPayPasswordAuth.swift */,
 				66C36AC62C4DDA47004292BA /* KeyPad.swift */,
+				66D64BCC2C5B13FE00744FE6 /* TryKeyPadMVI */,
 				66C2A37D2C40E64900FA4601 /* Assets.xcassets */,
 				66C2A37F2C40E64900FA4601 /* Preview Content */,
 			);
@@ -71,6 +78,16 @@
 				66C2A3802C40E64900FA4601 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		66D64BCC2C5B13FE00744FE6 /* TryKeyPadMVI */ = {
+			isa = PBXGroup;
+			children = (
+				66D64BC82C5B0E8900744FE6 /* KeyPadModel.swift */,
+				66D64BCA2C5B13FA00744FE6 /* KeyPadIntent.swift */,
+				66D64BCD2C5B155D00744FE6 /* KeyPadContainer.swift */,
+			);
+			path = TryKeyPadMVI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,9 +161,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				66FAC7C32C539A23008C83A4 /* FastPayPasswordAuth.swift in Sources */,
+				66D64BC92C5B0E8900744FE6 /* KeyPadModel.swift in Sources */,
 				66C36AC72C4DDA47004292BA /* KeyPad.swift in Sources */,
+				66D64BCE2C5B155D00744FE6 /* KeyPadContainer.swift in Sources */,
 				66C2A37C2C40E64700FA4601 /* ContentView.swift in Sources */,
 				66C2A37A2C40E64700FA4601 /* GroupBoxApp.swift in Sources */,
+				66D64BCB2C5B13FA00744FE6 /* KeyPadIntent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
