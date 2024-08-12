@@ -15,6 +15,10 @@
 		66D64BC92C5B0E8900744FE6 /* KeyPadModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D64BC82C5B0E8900744FE6 /* KeyPadModel.swift */; };
 		66D64BCB2C5B13FA00744FE6 /* KeyPadIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D64BCA2C5B13FA00744FE6 /* KeyPadIntent.swift */; };
 		66D64BCE2C5B155D00744FE6 /* KeyPadContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D64BCD2C5B155D00744FE6 /* KeyPadContainer.swift */; };
+		66D8EA412C64B6200014AC9D /* OtherChatExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D8EA402C64B6200014AC9D /* OtherChatExample.swift */; };
+		66D8EA432C64B6620014AC9D /* OtherChatProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D8EA422C64B6620014AC9D /* OtherChatProfileView.swift */; };
+		66D8EA452C64B7EA0014AC9D /* ChatClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D8EA442C64B7EA0014AC9D /* ChatClockView.swift */; };
+		66D8EA472C64B9A90014AC9D /* ChatEmojiHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D8EA462C64B9A90014AC9D /* ChatEmojiHStack.swift */; };
 		66FAC7C32C539A23008C83A4 /* FastPayPasswordAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FAC7C22C539A23008C83A4 /* FastPayPasswordAuth.swift */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +32,10 @@
 		66D64BC82C5B0E8900744FE6 /* KeyPadModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPadModel.swift; sourceTree = "<group>"; };
 		66D64BCA2C5B13FA00744FE6 /* KeyPadIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPadIntent.swift; sourceTree = "<group>"; };
 		66D64BCD2C5B155D00744FE6 /* KeyPadContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPadContainer.swift; sourceTree = "<group>"; };
+		66D8EA402C64B6200014AC9D /* OtherChatExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherChatExample.swift; sourceTree = "<group>"; };
+		66D8EA422C64B6620014AC9D /* OtherChatProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherChatProfileView.swift; sourceTree = "<group>"; };
+		66D8EA442C64B7EA0014AC9D /* ChatClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatClockView.swift; sourceTree = "<group>"; };
+		66D8EA462C64B9A90014AC9D /* ChatEmojiHStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatEmojiHStack.swift; sourceTree = "<group>"; };
 		66FAC7C22C539A23008C83A4 /* FastPayPasswordAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastPayPasswordAuth.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,6 +69,7 @@
 		66C2A3782C40E64700FA4601 /* GroupBox */ = {
 			isa = PBXGroup;
 			children = (
+				66D8EA3F2C64B5DD0014AC9D /* ChatEmogi */,
 				66C2A3792C40E64700FA4601 /* GroupBoxApp.swift */,
 				66C2A37B2C40E64700FA4601 /* ContentView.swift */,
 				66FAC7C22C539A23008C83A4 /* FastPayPasswordAuth.swift */,
@@ -88,6 +97,17 @@
 				66D64BCD2C5B155D00744FE6 /* KeyPadContainer.swift */,
 			);
 			path = TryKeyPadMVI;
+			sourceTree = "<group>";
+		};
+		66D8EA3F2C64B5DD0014AC9D /* ChatEmogi */ = {
+			isa = PBXGroup;
+			children = (
+				66D8EA402C64B6200014AC9D /* OtherChatExample.swift */,
+				66D8EA462C64B9A90014AC9D /* ChatEmojiHStack.swift */,
+				66D8EA442C64B7EA0014AC9D /* ChatClockView.swift */,
+				66D8EA422C64B6620014AC9D /* OtherChatProfileView.swift */,
+			);
+			path = ChatEmogi;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,12 +181,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				66FAC7C32C539A23008C83A4 /* FastPayPasswordAuth.swift in Sources */,
+				66D8EA452C64B7EA0014AC9D /* ChatClockView.swift in Sources */,
 				66D64BC92C5B0E8900744FE6 /* KeyPadModel.swift in Sources */,
 				66C36AC72C4DDA47004292BA /* KeyPad.swift in Sources */,
 				66D64BCE2C5B155D00744FE6 /* KeyPadContainer.swift in Sources */,
 				66C2A37C2C40E64700FA4601 /* ContentView.swift in Sources */,
 				66C2A37A2C40E64700FA4601 /* GroupBoxApp.swift in Sources */,
+				66D8EA472C64B9A90014AC9D /* ChatEmojiHStack.swift in Sources */,
+				66D8EA432C64B6620014AC9D /* OtherChatProfileView.swift in Sources */,
 				66D64BCB2C5B13FA00744FE6 /* KeyPadIntent.swift in Sources */,
+				66D8EA412C64B6200014AC9D /* OtherChatExample.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
