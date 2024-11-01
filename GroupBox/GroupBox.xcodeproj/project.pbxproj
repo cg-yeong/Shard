@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		66B06F792C6ADEFE001399CF /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B06F782C6ADEFE001399CF /* ChatView.swift */; };
 		66C2A37A2C40E64700FA4601 /* GroupBoxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C2A3792C40E64700FA4601 /* GroupBoxApp.swift */; };
 		66C2A37C2C40E64700FA4601 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C2A37B2C40E64700FA4601 /* ContentView.swift */; };
 		66C2A37E2C40E64900FA4601 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66C2A37D2C40E64900FA4601 /* Assets.xcassets */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		66B06F782C6ADEFE001399CF /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		66C2A3762C40E64700FA4601 /* GroupBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroupBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66C2A3792C40E64700FA4601 /* GroupBoxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupBoxApp.swift; sourceTree = "<group>"; };
 		66C2A37B2C40E64700FA4601 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				66D8EA402C64B6200014AC9D /* OtherChatExample.swift */,
+				66B06F782C6ADEFE001399CF /* ChatView.swift */,
 				66D8EA462C64B9A90014AC9D /* ChatEmojiHStack.swift */,
 				66D8EA442C64B7EA0014AC9D /* ChatClockView.swift */,
 				66D8EA422C64B6620014AC9D /* OtherChatProfileView.swift */,
@@ -184,6 +187,7 @@
 				66D8EA452C64B7EA0014AC9D /* ChatClockView.swift in Sources */,
 				66D64BC92C5B0E8900744FE6 /* KeyPadModel.swift in Sources */,
 				66C36AC72C4DDA47004292BA /* KeyPad.swift in Sources */,
+				66B06F792C6ADEFE001399CF /* ChatView.swift in Sources */,
 				66D64BCE2C5B155D00744FE6 /* KeyPadContainer.swift in Sources */,
 				66C2A37C2C40E64700FA4601 /* ContentView.swift in Sources */,
 				66C2A37A2C40E64700FA4601 /* GroupBoxApp.swift in Sources */,

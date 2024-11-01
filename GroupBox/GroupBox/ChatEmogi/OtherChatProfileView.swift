@@ -59,7 +59,7 @@ struct ChatOtherProfileView_Previews: PreviewProvider {
             HStack(alignment: .bottom, spacing: 0) {
                 Text("Pretty good. What are you doing this weekend?")
                     .font(.body)
-                    .foregroundColor(.gray)
+                    .foregroundColor(.white)
                     .padding(.leading, 16)
                     .padding(.trailing, 24)
                     .padding(.vertical, 8)

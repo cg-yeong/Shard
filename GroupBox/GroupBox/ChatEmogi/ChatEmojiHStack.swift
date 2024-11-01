@@ -1,56 +1,105 @@
 //
-//  ChatEmojiHStack.swift
-//  GroupBox
+//  ReactionStack.swift
+//  Feature
 //
-//  Created by root0 on 8/8/24.
+//  Created by root0 on 8/12/24.
+//  Copyright © 2024 GlobalHoneys. All rights reserved.
 //
 
 import SwiftUI
 
-struct Emoji: Identifiable {
-    let id: UUID = UUID()
-    let unicode: String = ""
-}
-enum EmojiReaction: String, CaseIterable {
+public struct Emoji: Identifiable, Hashable {
+    public var id = UUID()
+    public var unicode: String
 
-    case heart = "\u{2764}"
-    case thumbsUp = "\u{1F44D}"
-    case check = "\u{2714}"
-    case congratulate = "\u{1F389}"
-    case fallInLove = "\u{1F60D}"
-    case laugh = "\u{1F923}"
-    case sad = "\u{1F972}"
-
-    var unicode: String { rawValue }
-}
-
-struct ChatEmojiStack: View {
-
-    @Binding var emojis: [String]
-
-    @Binding var isAppear: Bool
-
-    var body: some View {
-        
-        HStack {
-            ForEach(emojis, id: \.self) { emoji in
-                Text(emoji)
-                    .font(.title)
-            }
-        }
-        .padding()
-        .background(Color(uiColor: UIColor.lightGray))
-        .cornerRadius(20, corners: [.allCorners])
+    public init(_ unicode: String) {
+        self.unicode = unicode
     }
 }
-// 하트, 엄지, 체크, 축하, 하트face, 웃음, 슬픔
+
+public enum EmojiReaction: CaseIterable {
+    case heart
+    case thumbsUp
+    case check
+    case congratulate
+    case fallInLove
+    case lauth
+    case sad
+
+    public var unicode: String {
+        switch self {
+        case .heart: "\u{2764}"
+        case .thumbsUp: "\u{1F44D}"
+        case .check: "\u{2714}"
+        case .congratulate: "\u{1F389}"
+        case .fallInLove: "\u{1F60D}"
+        case .lauth: "\u{1F923}"
+        case .sad: "\u{1F972}"
+        }
+    }
+
+    public var emoji: Emoji {
+        Emoji(self.unicode)
+    }
+}
+
+
+public struct ReactionStack<Content: View>: View {
+
+    @Binding var reactions: [EmojiReaction]
+    @Binding var showEmoji: Bool
+    @Binding var selected: Emoji?
+
+    let content: (Emoji) -> Content
+ /*
+  Button {
+      print("emoji tap")
+  } label: {
+      Text(emoji.unicode)
+  }
+  */
+
+    init(reactions: Binding<[EmojiReaction]>,
+         showEmoji: Binding<Bool>,
+         selected: Binding<Emoji?>,
+         @ViewBuilder content: @escaping (Emoji) -> Content) {
+        self._reactions = reactions
+        self._showEmoji = showEmoji
+        self._selected = selected
+
+        self.content = content
+    }
+
+    public var body: some View {
+        HStack(alignment: .center, spacing: 2) {
+            ForEach(reactions.map { $0.emoji }, id: \.self) { emoji in
+                content(emoji)
+                    .padding(4)
+                    .background(emoji.unicode == selected?.unicode ? Color(red: 0.882, green: 0.882, blue: 0.882) : Color.white)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+            }
+        }
+        .padding(.vertical, 4)
+        .padding(.horizontal, 8)
+        .background(Color.white)
+        .clipShape(RoundedRectangle(cornerRadius: 8))
+        .opacity(showEmoji ? 1 : 0)
+        .animation(.easeIn, value: showEmoji)
+        .shadow(radius: 6, y: 2)
+    }
+}
+
 #Preview {
-    ChatEmojiStack(
-        emojis: .constant(["\u{2764}", "\u{1F44D}", "\u{2714}", "\u{1F389}", "\u{1F60D}", "\u{1F923}", "\u{1F972}"]),
-        isAppear: .init(get: {
-            true
-        }, set: { value in
-            _ = value
-        })
-    )
+
+    Color.white.overlay {
+        ReactionStack(
+            reactions: .constant( EmojiReaction.allCases ),
+            showEmoji: .constant( true ),
+            selected: .constant(EmojiReaction.congratulate.emoji),
+            content: { emoji in
+                Text(emoji.unicode)
+                    .frame(width: 28, height: 28)
+            }
+        )
+    }
 }

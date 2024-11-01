@@ -13,15 +13,17 @@ public struct OtherTextMsgView: View {
 
     @GestureState var press = false
     @State var showEmoji = false
-    @State var selectedReaction: EmojiReaction?
-    @State var presentedReaction: [EmojiReaction] = []
+    @State var selectedReaction: Emoji?
+    @State var presentedReaction: [Emoji] = [Emoji("\u{2764}")]
+
+//    let namespace: Namespace.ID
 
     public init() {
     }
 
     public var body: some View {
         ChatOtherProfileView {
-            VStack(alignment: .leading, spacing: 5) {
+            VStack(alignment: .leading, spacing: 0) {
                 HStack(alignment: .bottom, spacing: 6) {
                     VStack(alignment: .leading, spacing: 2) {
                         Text("채팅내용은 챗컨텐츠 4.0")
@@ -42,90 +44,62 @@ public struct OtherTextMsgView: View {
                     .padding(.leading, 16)
                     .padding(.trailing, 24)
                     .padding(.vertical, 8)
-                    .background(showEmoji ? .secondary : Color.purple)
-                    .scaleEffect(press ? 2 : 1)
+                    .background(Color.purple)
                     .animation(.spring(response: 0.4, dampingFraction: 0.6))
-                    .background {
-                        GeometryReader { proxy in
-                            Color.clear
-                                .onAppear {
-                                    let proxy = proxy.frame(in: .local)
-                                    radius = proxy.height >= 20 ? 20 : 17.5
-                                }
-                        }
-                    }
                     .cornerRadius(radius, corners: [.topRight, .bottomLeft, .bottomRight])
-                    .gesture(
-                        LongPressGesture(minimumDuration: 0.5)
-                            .updating($press, body: { currentState, gestureState, transaction in
-                                gestureState = currentState
-                            })
-                            .onEnded({ value in
-                                showEmoji.toggle()
-                            })
-                    )
 
 
 
                     ClockView(time: 1710311370)
                 }
-                .overlay(alignment: .bottom) {
-                    HStack(spacing: 5) {
-
-                        ForEach(0 ..< EmojiReaction.allCases.count, id: \.self) { index in
-                            let emoji = EmojiReaction.allCases[index]
-                            Button {
-                                showEmoji = false
-                                selectedReaction = selectedReaction == emoji ? nil : emoji
-                                if presentedReaction.contains(where: { $0  == emoji}) {
-                                    presentedReaction.removeAll(where: { $0 == emoji})
-                                } else {
-                                    presentedReaction.append(emoji)
-                                }
-                            } label: {
-                                Text(emoji.rawValue)
-                            }
-                            .frame(width: 35, height: 35)
-                            .background(selectedReaction == emoji ? Color.gray.opacity(0.25) : Color.clear)
-                            .clipShape(Circle())
-    //                            .offset(y: showEmoji ? 0 : 40)
-                            .animation(.easeInOut.delay(0.05 * Double(index)), value: showEmoji)
-
-                        }
-                    }
-                    .padding(5)
-                    .background(.gray)
-                    .clipShape(RoundedRectangle(cornerRadius: 25))
-                    .offset(y: 50)
-                    .opacity(showEmoji ? 1 : 0)
-                    .animation(.easeIn, value: showEmoji)
-                    .zIndex(1)
-                }
                 .padding(.top, 4)
                 .padding(.leading, 8)
 
-
-                HStack(spacing: 0) {
-                    ForEach(0 ..< presentedReaction.count, id: \.self) { emoji in
-                        let emoji = presentedReaction[emoji]
-                        Button {
-                            presentedReaction.removeAll(where: { $0 == emoji })
-                        } label: {
-                            Text(emoji.rawValue)
-                        }
-                        .frame(width: 35, height: 35)
-                        .clipShape(Circle())
-                    }
-                }
-                .padding(5)
-                .background(Color.cyan)
-                .opacity(presentedReaction.isEmpty ? 0 : 1)
-                .clipShape(RoundedRectangle(cornerRadius: 25))
-                .padding(.leading, 9)
-                .padding(.trailing, 24)
+                // SELECTED EMOJI
+                Text(selectedReaction?.unicode ?? "\u{2764}")
+                    .frame(height: 20)
+                    .padding(.vertical, 4)
+                    .padding(.horizontal, 10)
+                    .background(Color(red: 0.945, green: 0.945, blue: 0.945))
+//                    .opacity(presentedReaction.isEmpty ? 0 : 1)
+                    .overlay(RoundedRectangle(cornerRadius: 50).stroke(Color.white, lineWidth: 4.0))
+                    .clipShape(RoundedRectangle(cornerRadius: 50))
+                    .padding(.leading, 16)
+                    .padding(.top, -6)
+                    .opacity((selectedReaction?.unicode ?? "\u{2764}").isEmpty ? 0 : 1)
 
             }
 
+        }
+        .overlay(alignment: .bottom) {
+//            HStack(spacing: 5) {
+//
+//                ForEach(0 ..< EmojiReaction.allCases.count, id: \.self) { index in
+//                    let emoji = EmojiReaction.allCases[index]
+//                    Button {
+//                        showEmoji = false
+//                        selectedReaction = selectedReaction == emoji ? nil : emoji
+//                        if presentedReaction.contains(where: { $0  == emoji}) {
+//                            presentedReaction.removeAll(where: { $0 == emoji})
+//                        } else {
+//                            presentedReaction.append(emoji)
+//                        }
+//                    } label: {
+//                        Text(emoji.rawValue)
+//                    }
+//                    .frame(width: 35, height: 35)
+//                    .background(selectedReaction == emoji ? Color.gray.opacity(0.25) : Color.clear)
+//                    .clipShape(Circle())
+//                    .offset(y: showEmoji ? 0 : 40)
+//                    .animation(.easeInOut.delay(0.05 * Double(index)), value: showEmoji)
+//
+//                }
+//            }
+//            .padding(5)
+//            .background(.gray)
+//            .clipShape(RoundedRectangle(cornerRadius: 25))
+//            .opacity(showEmoji ? 1 : 0)
+//            .animation(.easeIn, value: showEmoji)
         }
         .onAppear {
 
@@ -138,9 +112,10 @@ struct OtherTextMsgView_Previews: PreviewProvider {
     static var previews: some View {
         VStack(spacing: 0) {
             OtherTextMsgView()
+                .background(Color.blue)
             Spacer()
         }
-
+        .background(Color(red: 0.882, green: 0.882, blue: 0.882))
     }
 }
 
