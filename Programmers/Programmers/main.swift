@@ -8,4 +8,8 @@
 import Foundation
 
 print("Hello, World!")
-print(estimatedMatch(8, 4, 7))
+print(rotateBracket("[](){}"))
+print(rotateBracket("}]()[{"))
+print(rotateBracket("{(})"))
+print(rotateBracket("}}}"))
+//print(isCorrectBracket("{}]()["))
